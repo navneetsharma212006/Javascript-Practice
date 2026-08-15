@@ -121,6 +121,18 @@ output - 100 , 10
 
 // const c = 30;
 
+// JavaScript code run karne se pehle variables ki
+//  declaration ko memory mein register kar leta hai.
+
+//  var
+// "Jaanta hoon + undefined de sakta hoon"
+
+// let
+// "Jaanta hoon + abhi use nahi kar sakte"
+
+// const
+// "Jaanta hoon + abhi use nahi kar sakte"
+
 
 //q 5 - 
 
@@ -399,6 +411,9 @@ let and const ARE hoisted.
 
 The difference is that they stay inside the
 Temporal Dead Zone until initialized.
+
+TDZ wo time hai jab JavaScript ko pata hota hai ki let/const variable exist karta hai, 
+lekin uski declaration execute hone se pehle usko access nahi kar sakte.
 
 =========================================================
 4. Temporal Dead Zone (TDZ)
@@ -890,3 +905,5 @@ Avoid → var
 
 
 */
+
+
