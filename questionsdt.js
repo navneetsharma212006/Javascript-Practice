@@ -1178,4 +1178,6 @@ For JavaScript and MERN development, focus MOST on:
 
 If you understand these properly, your JavaScript
 foundation for data types will be very strong.
+
+
 */
