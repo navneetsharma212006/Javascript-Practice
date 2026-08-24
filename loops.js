@@ -42,8 +42,6 @@ Final Result
 AND means:
 
 ALL conditions must be true.
-
-
 Example:
 
 let age = 20;
