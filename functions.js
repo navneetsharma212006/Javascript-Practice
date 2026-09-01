@@ -952,6 +952,102 @@ calculateSum(1, 2, 3, 4);
 numbers = [1, 2, 3, 4]
 
 
+
+Types of functions in js-
+
+1. Function Declaration 
+
+function greet(){
+
+console.log("Hello");
+
+}
+
+2. Function Expression
+
+const greet = function(){
+
+console.log("Hello");
+
+}
+
+3. Arrow Function
+
+const greet = () => {
+
+console.log("Hello");
+
+}
+
+4. Anonymous Function
+
+setTimeout(function(){
+
+console.log("Hello");
+
+}, 1000);
+
+5. Callback Function
+
+function processUser(callback){
+
+console.log("Processing user");
+
+callback();
+
+}
+
+6. Higher Order Function
+
+function calculate(a, b, operation){
+
+return operation(a, b);
+
+}   
+
+7. Pure Function
+
+function add(a, b){ 
+
+return a + b;
+
+}   
+
+8. Impure Function
+
+let total = 0;  
+
+function add(a, b){
+
+total += a + b; 
+}       
+
+9. Closure
+
+function createCounter(){   
+
+let count = 0;  
+
+return function(){
+
+count++;    
+
+return count;   
+}
+
+10. Async Function
+
+const getUser = async () => {
+
+const response = await fetch("/api/users");
+
+const data = await response.json();
+
+return data;
+
+}   
+
+
 =========================================================
 18. CALLBACK FUNCTIONS
 =========================================================
