@@ -519,9 +519,7 @@ The arrow function is a callback.
 
 JavaScript functions can be passed to other functions.
 
-
 Example:
-
 setTimeout(() => {
 
     console.log("Hello");
@@ -530,7 +528,6 @@ setTimeout(() => {
 
 
 The arrow function is passed as a callback.
-
 
 You'll see this pattern everywhere:
 
