@@ -917,7 +917,7 @@ const add = () => {
     console.log(arguments);
 
 };
-
+9
 
 This won't work as you might expect.
 
