@@ -1,29 +1,27 @@
-const apiResponse = [
+users = [
 
     {
-        name :"Navneet",
-        age:89
-    },
-
-    {
-        name :"Sharma",
-        age:67
-    },
-    
-
-    {
-        name :"tinku",
-        age:56
+        name:"Navneet",
+        age:89,
+        isactive:false
     },
     {
-        name :"billu",
-        age:657
+        name:"Golu",
+        age:89,
+        isactive:false
+    },
+    {
+        name:"yash",
+        age:90,
+        isactive:true
     }
 ]
-totalage = 0
-const result = apiResponse.reduce((user)=>{
-    totalage += user.age
-    return totalage
+
+
+const active = users.filter((user)=>{
+   return user.isactive
+}).map((user)=>{
+   return user.name
 })
 
-console.log(result)
+console.log(active)
