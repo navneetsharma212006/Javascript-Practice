@@ -1,387 +1,373 @@
 /*
-===========================================================
-          JAVASCRIPT querySelector() — COMPLETE Q&A
-===========================================================
+╔══════════════════════════════════════════════════════════════════════╗
+║              JAVASCRIPT — querySelector() COMPLETE GUIDE           ║
+║                    Beginner → MERN Developer                       ║
+╚══════════════════════════════════════════════════════════════════════╝
 
 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Q1. What is querySelector()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Answer:
-
-querySelector() is a DOM method in JavaScript that finds
-an HTML element using a CSS selector.
+querySelector() is a JavaScript DOM method used to find an HTML element
+using a CSS selector.
 
 Syntax:
 
-document.querySelector("selector");
+document.querySelector("CSS selector");
 
 
 Example:
 
-HTML:
+<h1 id="title">Welcome</h1>
 
-<h1>Hello</h1>
+<script>
 
+const title = document.querySelector("#title");
 
-JavaScript:
+console.log(title);
 
-const heading = document.querySelector("h1");
-
-console.log(heading);
+</script>
 
 
 Output:
 
-<h1>Hello</h1>
+<h1 id="title">Welcome</h1>
 
 
-Simple mental model:
+Simple meaning:
 
-querySelector()
-       ↓
-Search the DOM
-       ↓
-Find the first matching element
-       ↓
-Return that element
+"Find the first HTML element that matches this selector."
 
 
-===========================================================
-Q2. What is the most important rule of querySelector()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q2. Why do we need querySelector()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Answer:
+JavaScript needs a way to find HTML elements so that we can:
 
-querySelector() returns ONLY the FIRST matching element.
+- change text
+- change styles
+- read values
+- add event listeners
+- show/hide elements
+- modify classes
+- respond to user actions
 
 
 Example:
 
-<p>Hello</p>
-<p>World</p>
-<p>JavaScript</p>
+<button class="login-btn">Login</button>
 
 
-const paragraph = document.querySelector("p");
+const button = document.querySelector(".login-btn");
 
-
-Result:
-
-<p>Hello</p>
-
-
-It does NOT return the other two paragraphs.
-
-
-Remember:
-
-querySelector()
-→ First match
-
-
-querySelectorAll()
-→ All matches
-
-
-This is the most important difference to remember.
-
-
-===========================================================
-Q3. Why does querySelector() use CSS selectors?
-
-Answer:
-
-Because querySelector() understands CSS selector syntax.
-
-This allows you to select elements using:
-
-    - Tag
-    - ID
-    - Class
-    - Multiple classes
-    - Nested elements
-    - Direct children
-    - Attributes
-    - data-* attributes
-
-
-For example:
-
-document.querySelector("button");
-
-document.querySelector("#login");
-
-document.querySelector(".card");
-
-document.querySelector(".container .title");
-
-document.querySelector(
-    'input[type="email"]'
-);
-
-
-===========================================================
-Q4. How do you select an element by tag name?
-
-HTML:
-
-<h1>Hello</h1>
-
-
-JavaScript:
-
-const heading = document.querySelector("h1");
+button.addEventListener("click", () => {
+    console.log("Login clicked");
+});
 
 
 Here:
 
-"h1"
-
-is the CSS selector.
-
-The browser searches for the first <h1> element.
-
-
------------------------------------------------------------
-
-If there are multiple h1 elements:
-
-<h1>One</h1>
-<h1>Two</h1>
+HTML
+ ↓
+querySelector()
+ ↓
+JavaScript finds the button
+ ↓
+JavaScript adds functionality
 
 
-const heading = document.querySelector("h1");
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q3. Why is it called querySelector?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Because you give it a CSS selector.
 
-Only:
-
-<h1>One</h1>
-
-is returned.
-
-
-===========================================================
-Q5. How do you select an element by ID?
-
-HTML:
-
-<h1 id="title">
-    Hello
-</h1>
-
-
-JavaScript:
-
-const title =
-    document.querySelector("#title");
-
-
-Important:
-
-CSS uses:
-
-#
-
-
-for IDs.
-
-Therefore:
-
-#title
-
-means:
-
-"Find the element whose ID is title."
-
-
-Example:
-
-document.querySelector("#loginForm");
-
-
-===========================================================
-Q6. How do you select an element by class?
-
-HTML:
-
-<div class="card">
-    Product
-</div>
-
-
-JavaScript:
-
-const card =
-    document.querySelector(".card");
-
-
-Important:
-
-CSS uses:
-
-.
-
-
-for classes.
-
-Therefore:
-
-.card
-
-means:
-
-"Find the element whose class is card."
-
-
-===========================================================
-Q7. What is the difference between an ID selector
-and a class selector?
-
-Answer:
-
+For example:
 
 ID:
 
-#title
+document.querySelector("#title");
 
 
 Class:
 
-.title
+document.querySelector(".card");
 
 
-Example:
+Tag:
+
+document.querySelector("button");
+
+
+Attribute:
+
+document.querySelector("[data-product-id]");
+
+
+So remember:
+
+querySelector() = "Find an element using a CSS selector."
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q4. How do I select an element by ID?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HTML:
 
-<h1 id="title">
-    Hello
-</h1>
-
-<div class="title">
-    Product
-</div>
+<h1 id="title">Hello</h1>
 
 
 JavaScript:
 
-document.querySelector("#title");
-
-→ selects the h1
+const title = document.querySelector("#title");
 
 
-document.querySelector(".title");
+Important:
 
-→ selects the div
+HTML:
+
+id="title"
+
+
+CSS selector:
+
+#title
+
+
+The # is required because you are using a CSS ID selector.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q5. How do I select an element by class?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HTML:
+
+<button class="login-btn">Login</button>
+
+
+JavaScript:
+
+const button = document.querySelector(".login-btn");
+
+
+Notice:
+
+class="login-btn"
+
+becomes:
+
+.login-btn
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q6. How do I select an element by tag?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HTML:
+
+<button>Login</button>
+
+
+JavaScript:
+
+const button = document.querySelector("button");
+
+
+No #.
+
+No .
+
+Just:
+
+"button"
+
+
+It searches for the first <button> element.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q7. What does "first matching element" mean?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Suppose we have:
+
+<button class="buy-btn">Buy 1</button>
+<button class="buy-btn">Buy 2</button>
+<button class="buy-btn">Buy 3</button>
+
+
+Now:
+
+const button = document.querySelector(".buy-btn");
+
+
+Only the FIRST button is returned.
+
+It does NOT return all three.
+
+
+This is one of the most important things to remember.
+
+
+querySelector()
+        ↓
+first matching element
+
+
+querySelectorAll()
+        ↓
+all matching elements
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q8. What happens if no element is found?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+It returns:
+
+null
+
+
+Example:
+
+const button = document.querySelector("#login");
+
+
+If #login doesn't exist:
+
+console.log(button);
+
+Output:
+
+null
+
+
+This is important because this can cause an error:
+
+const button = document.querySelector("#login");
+
+button.addEventListener("click", handleLogin);
+
+
+If button is null:
+
+TypeError
+
+
+Safer:
+
+const button = document.querySelector("#login");
+
+if (button) {
+    button.addEventListener("click", handleLogin);
+}
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q9. What is a very common beginner mistake?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Wrong:
+
+const button = document.querySelector("login");
+
+
+If you have:
+
+<button id="login">Login</button>
+
+
+Correct:
+
+const button = document.querySelector("#login");
+
+
+Because:
+
+id → #
+
+class → .
+
+tag → nothing
 
 
 Remember:
 
 # → ID
 
-. → Class
+. → class
+
+nothing → tag
 
 
-===========================================================
-Q8. What happens if multiple elements have the same class?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q10. Can querySelector() select multiple classes?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Yes.
 
 HTML:
 
-<div class="card">Product 1</div>
-
-<div class="card">Product 2</div>
-
-<div class="card">Product 3</div>
+<button class="btn active">
+    Buy
+</button>
 
 
 JavaScript:
 
-const card =
-    document.querySelector(".card");
+const button = document.querySelector(".btn.active");
 
 
-Result:
+This means:
 
-Product 1
+Find an element that has BOTH:
 
+btn
 
-Only the FIRST matching element is returned.
+AND
 
-
-If you need all cards:
-
-const cards =
-    document.querySelectorAll(".card");
-
-
-===========================================================
-Q9. How do you select an element that has multiple classes?
-
-HTML:
-
-<div class="card active">
-    Product
-</div>
-
-
-JavaScript:
-
-const element =
-    document.querySelector(".card.active");
+active
 
 
 Important:
 
-There is NO space between:
-
-.card
-
-and
-
-.active
-
-
-Meaning:
-
-Find an element that has BOTH:
-
-card
-AND
-active
-
-
-===========================================================
-Q10. What is the difference between these two selectors?
-
-.card.active
-
-.card .active
-
-
-Answer:
-
-
-.card.active
+.btn.active
 
 means:
 
-The SAME element has both classes.
+same element has both classes.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q11. What is the difference between ".card.active" and ".card .active"?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+This is VERY important CSS selector knowledge.
+
+1. ".card.active"
+
+Means:
+
+Same element has both classes.
 
 
 Example:
 
-<div class="card active">
-    Product
-</div>
+<div class="card active"></div>
 
 
-Matches.
+Correct match.
 
 
------------------------------------------------------------
+2. ".card .active"
 
-.card .active
+There is a SPACE.
 
-means:
+It means:
 
 Find an element with class "active"
 INSIDE an element with class "card".
@@ -398,666 +384,57 @@ Example:
 </div>
 
 
-Matches.
-
-
-This is a very common CSS selector interview trap.
-
-
-===========================================================
-Q11. How do you select a nested element?
-
-HTML:
-
-<div class="container">
-
-    <h2 class="title">
-        Products
-    </h2>
-
-</div>
-
-
-JavaScript:
-
-const title =
-    document.querySelector(
-        ".container .title"
-    );
-
-
-Meaning:
-
-Find .title
-
-inside
-
-.container
-
-
-===========================================================
-Q12. What does the > selector mean?
-
-Answer:
-
-> means DIRECT CHILD.
-
-
-HTML:
-
-<div class="container">
-
-    <p>Direct child</p>
-
-    <div>
-        <p>Nested child</p>
-    </div>
-
-</div>
-
-
-Selector:
-
-document.querySelector(
-    ".container > p"
-);
-
-
-This selects:
-
-<p>Direct child</p>
-
-
-It does NOT select the nested <p>.
-
-
-Difference:
-
-.container p
-
-→ any descendant p
-
-
-.container > p
-
-→ direct child p only
-
-
-===========================================================
-Q13. What is an attribute selector?
-
-Answer:
-
-An attribute selector selects an element based on
-its HTML attribute.
-
-Example:
-
-HTML:
-
-<input
-    type="email"
->
-
-
-JavaScript:
-
-const input =
-    document.querySelector(
-        'input[type="email"]'
-    );
-
-
-Meaning:
-
-Find an input whose type is email.
-
-
-Other examples:
-
-button[type="submit"]
-
-input[name="username"]
-
-input[required]
-
-
-===========================================================
-Q14. How can you select an element using a data-* attribute?
-
-HTML:
-
-<button
-    data-product-id="101"
->
-    Delete
-</button>
-
-
-Using querySelector():
-
-const button =
-    document.querySelector(
-        '[data-product-id="101"]'
-    );
-
-
-Then you can read the value:
-
-console.log(button.dataset.productId);
-
-
-Output:
-
-101
-
-
-This is useful when working with dynamic UI elements.
-
-
-===========================================================
-Q15. What does querySelector() return?
-
-Answer:
-
-If a matching element exists:
-
-→ The matching Element
-
-
-If no matching element exists:
-
-→ null
-
-
-Example:
-
-const title =
-    document.querySelector("#title");
-
-
-If #title exists:
-
-Element
-
-
-If #title does not exist:
-
-null
-
-
-===========================================================
-Q16. What happens if querySelector() cannot find
-the element?
-
-Example:
-
-const button =
-    document.querySelector("#login");
-
-
-Suppose there is no element with:
-
-id="login"
-
-
-Then:
-
-button === null
-
-
-Therefore this can cause an error:
-
-button.addEventListener("click", () => {
-
-});
-
-
-Because you are effectively doing:
-
-null.addEventListener(...)
-
-
-A safer approach:
-
-if (button) {
-
-    button.addEventListener(
-        "click",
-        () => {
-            console.log("Clicked");
-        }
-    );
-
-}
-
-
-===========================================================
-Q17. Can querySelector() be used on an element instead
-of document?
-
-Answer:
-
-YES.
-
-This is an important concept.
-
-
-HTML:
-
-<div class="user">
-
-    <h2 class="name">
-        Navneet
-    </h2>
-
-</div>
-
-
-First find the user:
-
-const user =
-    document.querySelector(".user");
-
-
-Then search inside that element:
-
-const name =
-    user.querySelector(".name");
-
-
-Now querySelector() searches inside:
-
-.user
-
-
-instead of searching the entire document.
-
-
-This is called a scoped search.
-
-
-===========================================================
-Q18. Why is scoped querySelector() useful?
-
-Answer:
-
-Imagine an e-commerce page contains 100 product cards.
-
-Each card contains:
-
-<div class="card">
-
-    <h2 class="title">
-        Product
-    </h2>
-
-</div>
-
-
-Suppose you already have one specific card:
-
-const card =
-    document.querySelector(".card");
-
-
-Now:
-
-const title =
-    card.querySelector(".title");
-
-
-You are saying:
-
-"Find the title inside THIS card."
-
-
-This makes your code more precise.
-
-
-===========================================================
-Q19. What is the difference between:
-
-document.querySelector(".title")
-
-and
-
-card.querySelector(".title")?
-
-
-Answer:
-
-
-document.querySelector(".title")
-
-→ Searches the entire document.
-
-
-card.querySelector(".title")
-
-→ Searches only inside card.
-
-
-This is especially useful when working with
-nested components or repeated UI structures.
-
-
-===========================================================
-Q20. Can querySelector() select an element by tag,
-class and ID?
-
-Answer:
-
-YES.
-
-
-Tag:
-
-document.querySelector("button");
-
-
-Class:
-
-document.querySelector(".button");
-
-
-ID:
-
-document.querySelector("#button");
-
-
-All are valid CSS selectors.
-
-
-===========================================================
-Q21. Can you combine selectors?
-
-Answer:
-
-YES.
-
-Example:
-
-document.querySelector(
-    "button.primary"
-);
-
-
-Meaning:
-
-Find a button
-
-AND
-
-it must have the primary class.
-
-
-Another example:
-
-document.querySelector(
-    ".card.active"
-);
-
-
-Meaning:
-
-Find an element having both card and active classes.
-
-
-===========================================================
-Q22. Can querySelector() select based on multiple conditions?
-
-Answer:
-
-YES.
-
-Example:
-
-HTML:
-
-<input
-    type="email"
-    class="input"
->
-
-
-Selector:
-
-const input =
-    document.querySelector(
-        'input.input[type="email"]'
-    );
-
-
-Meaning:
-
-Find an input
-
-AND
-
-it has class input
-
-AND
-
-its type is email.
-
-
-You do not need to memorize complex combinations,
-but you should understand how CSS selectors work.
-
-
-===========================================================
-Q23. What is the difference between querySelector()
-and getElementById()?
-
-Answer:
-
-
-getElementById():
-
-document.getElementById("title");
-
-
-querySelector():
-
-document.querySelector("#title");
-
-
-Both can find an element by ID.
-
-But querySelector() is more flexible because it
-supports CSS selectors.
-
-
-For example:
-
-document.querySelector(".card");
-
-document.querySelector("button");
-
-document.querySelector(".container .title");
-
-document.querySelector(
-    'input[type="email"]'
-);
-
-
 So:
 
-getElementById()
-→ specifically for IDs
+.card.active
+
+= same element
 
 
-querySelector()
-→ CSS selector based
+.card .active
+
+= child/descendant element
 
 
-===========================================================
-Q24. What is the difference between querySelector()
-and querySelectorAll()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q12. Can querySelector() select elements inside another element?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Answer:
-
-
-querySelector():
-
-const card =
-    document.querySelector(".card");
-
-
-→ FIRST matching element
-
-
-querySelectorAll():
-
-const cards =
-    document.querySelectorAll(".card");
-
-
-→ ALL matching elements
-
-
-Example:
-
-<div class="card">1</div>
-<div class="card">2</div>
-<div class="card">3</div>
-
-
-querySelector(".card")
-
-→ Card 1
-
-
-querySelectorAll(".card")
-
-→ Card 1
-   Card 2
-   Card 3
-
-
-===========================================================
-Q25. Does querySelector() return an Array?
-
-Answer:
-
-NO.
-
-querySelector() returns an Element
-(or null if nothing matches).
-
-
-Example:
-
-const card =
-    document.querySelector(".card");
-
-
-This is an Element.
-
-
------------------------------------------------------------
-
-querySelectorAll() returns a NodeList.
-
-const cards =
-    document.querySelectorAll(".card");
-
-
-This is a NodeList, NOT a normal Array.
-
-
-===========================================================
-Q26. What happens if you need all elements but
-accidentally use querySelector()?
-
-Example:
+Yes.
 
 HTML:
 
-<button class="delete">Delete 1</button>
-<button class="delete">Delete 2</button>
-<button class="delete">Delete 3</button>
+<div class="product">
 
+    <h2 class="product-title">
+        iPhone
+    </h2>
 
-Code:
-
-const buttons =
-    document.querySelector(".delete");
-
-
-What happens?
-
-Answer:
-
-Only the FIRST delete button is stored.
-
-
-If you want all:
-
-const buttons =
-    document.querySelectorAll(".delete");
-
-
-This is one of the most common mistakes.
-
-
-===========================================================
-Q27. How can you modify an element after selecting it?
-
-Example:
-
-HTML:
-
-<h1 class="title">
-    Hello
-</h1>
+</div>
 
 
 JavaScript:
 
-const title =
-    document.querySelector(".title");
+const title = document.querySelector(".product .product-title");
 
 
-Change text:
+This means:
 
-title.textContent = "Products";
-
-
-Add class:
-
-title.classList.add("active");
+Find .product-title
+inside .product.
 
 
-Change style:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q13. Can querySelector() use attribute selectors?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-title.style.display = "none";
+Yes.
 
-
-Change attribute:
-
-title.setAttribute(
-    "data-status",
-    "active"
-);
-
-
-The general pattern is:
-
-SELECT
-   ↓
-STORE
-   ↓
-READ / MODIFY
-
-
-===========================================================
-Q28. What is a real-world e-commerce use case?
+This is very useful for dynamic applications.
 
 HTML:
 
-<button class="add-cart">
+<button data-product-id="101">
     Add to Cart
 </button>
 
@@ -1065,103 +442,108 @@ HTML:
 JavaScript:
 
 const button =
-    document.querySelector(".add-cart");
+    document.querySelector("[data-product-id]");
 
 
-button.addEventListener("click", () => {
+This finds an element containing:
 
-    console.log("Product added to cart");
-
-});
+data-product-id
 
 
-Flow:
+You can also select a specific value:
 
-HTML
- ↓
-querySelector()
- ↓
-Find button
- ↓
-addEventListener()
- ↓
-User clicks
- ↓
-Cart logic
+const button =
+    document.querySelector('[data-product-id="101"]');
 
 
-In a real application, the click could trigger:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q14. Why are data-* attributes useful in real applications?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    ↓
-API request
-    ↓
-Express backend
-    ↓
-Database
-    ↓
-Response
-    ↓
-UI update
+Suppose an e-commerce website displays products:
+
+<button data-product-id="101">
+    Add to Cart
+</button>
+
+<button data-product-id="102">
+    Add to Cart
+</button>
 
 
-===========================================================
-Q29. What is a real-world search bar use case?
+The frontend needs to know:
+
+"Which product did the user click?"
+
+
+data-product-id allows us to store that identifier in the HTML.
+
+
+Example:
+
+const button =
+    document.querySelector('[data-product-id="101"]');
+
+
+In modern React applications, you will often see:
+
+data-product-id
+
+data-user-id
+
+data-order-id
+
+etc.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q15. Can querySelector() select an input?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Yes.
 
 HTML:
 
 <input
-    id="search"
-    type="text"
+    id="email"
+    type="email"
 >
-
-<div id="results"></div>
 
 
 JavaScript:
 
-const search =
-    document.querySelector("#search");
-
-const results =
-    document.querySelector("#results");
+const emailInput =
+    document.querySelector("#email");
 
 
-search.addEventListener("input", () => {
+To get the user's entered value:
 
-    console.log(search.value);
-
-});
+console.log(emailInput.value);
 
 
-Real flow:
+Example:
 
-User types:
+const emailInput =
+    document.querySelector("#email");
 
-iphone
-
-    ↓
-
-input event
-
-    ↓
-
-search.value
-
-    ↓
-
-filter products
-OR
-API request
-
-    ↓
-
-Display results
+console.log(emailInput.value);
 
 
-===========================================================
-Q30. What is a real-world login form use case?
+If user enters:
 
-HTML:
+navneet@gmail.com
+
+
+Output:
+
+navneet@gmail.com
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q16. REAL INDUSTRY USE CASE — Login Form
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Imagine a simple login page:
 
 <form id="loginForm">
 
@@ -1175,7 +557,7 @@ HTML:
         type="password"
     >
 
-    <button type="submit">
+    <button id="loginButton">
         Login
     </button>
 
@@ -1187,1488 +569,182 @@ JavaScript:
 const form =
     document.querySelector("#loginForm");
 
-const email =
+const emailInput =
     document.querySelector("#email");
 
-const password =
+const passwordInput =
     document.querySelector("#password");
 
+const button =
+    document.querySelector("#loginButton");
+
+
+Now JavaScript can interact with the UI.
+
+
+Example:
 
 form.addEventListener("submit", (event) => {
 
     event.preventDefault();
 
-    console.log(email.value);
-    console.log(password.value);
+    const email = emailInput.value;
+    const password = passwordInput.value;
+
+    console.log(email);
+    console.log(password);
 
 });
 
 
-Here querySelector() is used to find:
+Real application flow:
 
-    form
-    email input
-    password input
-
-
-Then JavaScript can validate the values
-and send them to an API.
-
-
-===========================================================
-Q31. What are the most important selectors you should
-know as a MERN developer?
-
-Answer:
-
-
-1. Tag
-
-"button"
+User enters email/password
+        ↓
+querySelector() finds inputs
+        ↓
+JavaScript reads .value
+        ↓
+fetch()
+        ↓
+Express backend
+        ↓
+Database
+        ↓
+Response
+        ↓
+Frontend updates UI
 
 
-2. ID
-
-"#login"
+This is the basic foundation behind many web applications.
 
 
-3. Class
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q17. Can querySelector() select a button?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-".card"
-
-
-4. Multiple classes
-
-".card.active"
-
-
-5. Descendant
-
-".container .card"
-
-
-6. Direct child
-
-".container > .card"
-
-
-7. Attribute
-
-'input[type="email"]'
-
-
-8. data-* attribute
-
-'[data-id="101"]'
-
-
-These are enough for most practical DOM work.
-
-
-===========================================================
-Q32. Do you need to memorize every CSS selector
-for querySelector()?
-
-Answer:
-
-NO.
-
-You should understand the common selectors:
-
-    #id
-    .class
-    tag
-    .parent .child
-    .parent > .child
-    [attribute]
-    [attribute="value"]
-
-You can look up rare or complex selectors when needed.
-
-Do not waste time memorizing dozens of CSS selectors.
-
-
-===========================================================
-Q33. What is a common mistake with IDs?
-
-Example:
+Yes.
 
 HTML:
 
-<div id="product"></div>
-
-
-Incorrect:
-
-document.querySelector("product");
-
-
-Correct:
-
-document.querySelector("#product");
-
-
-Why?
-
-Because:
-
-product
-
-means tag selector.
-
-
-#product
-
-means ID selector.
-
-
-===========================================================
-Q34. What is a common mistake with classes?
-
-HTML:
-
-<div class="card"></div>
-
-
-Incorrect:
-
-document.querySelector("card");
-
-
-Correct:
-
-document.querySelector(".card");
-
-
-Because:
-
-.card
-
-means class.
-
-
-===========================================================
-Q35. What happens if the HTML element is below
-the JavaScript execution point?
-
-Answer:
-
-Depending on where/how the script is loaded,
-querySelector() may run before the element exists.
-
-For example, if JavaScript executes before:
-
-<h1 id="title">Hello</h1>
-
-has been parsed, this can return:
-
-null
-
-
-Solutions include:
-
-    - Put the script appropriately
-    - Use defer
-    - Run code after DOMContentLoaded
-
-
-Modern HTML commonly uses:
-
-<script defer src="app.js"></script>
-
-
-===========================================================
-Q36. What is DOMContentLoaded?
-
-Answer:
-
-DOMContentLoaded fires when the HTML document has been
-fully parsed and the DOM has been constructed.
-
-Example:
-
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-
-        const title =
-            document.querySelector("#title");
-
-        console.log(title);
-
-    }
-);
-
-
-This ensures the DOM is ready before accessing elements.
-
-
-===========================================================
-Q37. Should you use querySelector() everywhere in React?
-
-Answer:
-
-NO.
-
-In React, you normally do NOT manually manipulate the DOM.
-
-Instead:
-
-State
- ↓
-React
- ↓
-DOM
-
-
-Example:
-
-const [count, setCount] = useState(0);
-
-
-<button onClick={() => setCount(count + 1)}>
-    {count}
+<button class="submit-btn">
+    Submit
 </button>
-
-
-React manages the DOM update.
-
-
-===========================================================
-Q38. What should you use in React when you need
-direct access to a DOM element?
-
-Answer:
-
-useRef()
-
-
-Example:
-
-const inputRef = useRef(null);
-
-
-<input ref={inputRef} />
-
-
-Then:
-
-inputRef.current.focus();
-
-
-This is generally preferred over:
-
-document.querySelector()
-
-
-inside React components.
-
-
-===========================================================
-Q39. When can direct DOM access be useful in React?
-
-Answer:
-
-For imperative operations such as:
-
-    - Focusing an input
-    - Scrolling to an element
-    - Measuring an element
-    - Controlling video/audio
-    - Working with canvas
-    - Integrating third-party DOM libraries
-
-
-Example:
-
-inputRef.current.focus();
-
-
-This is a legitimate use of direct DOM access.
-
-
-===========================================================
-Q40. What are the most common querySelector() mistakes?
-
-Answer:
-
-
-MISTAKE 1:
-
-Forgetting # for IDs.
-
-Wrong:
-
-querySelector("title")
-
-Correct:
-
-querySelector("#title")
-
-
------------------------------------------------------------
-
-MISTAKE 2:
-
-Forgetting . for classes.
-
-Wrong:
-
-querySelector("card")
-
-Correct:
-
-querySelector(".card")
-
-
------------------------------------------------------------
-
-MISTAKE 3:
-
-Expecting all elements.
-
-querySelector()
-
-→ first only
-
-
------------------------------------------------------------
-
-MISTAKE 4:
-
-Not handling null.
-
-const button =
-    document.querySelector("#button");
-
-button.addEventListener(...);
-
-
-If button doesn't exist:
-
-ERROR
-
-
------------------------------------------------------------
-
-MISTAKE 5:
-
-Confusing:
-
-.card.active
-
-with:
-
-.card .active
-
-
------------------------------------------------------------
-
-MISTAKE 6:
-
-Using document.querySelector() unnecessarily
-inside React components.
-
-
-===========================================================
-                 INTERVIEW RAPID FIRE
-===========================================================
-
-
-Q41. What does querySelector() return?
-
-Answer:
-
-The first matching Element, or null.
-
-
------------------------------------------------------------
-
-Q42. Does querySelector() return all matching elements?
-
-Answer:
-
-NO.
-
-It returns only the first match.
-
-
------------------------------------------------------------
-
-Q43. Which method returns all matching elements?
-
-Answer:
-
-querySelectorAll()
-
-
------------------------------------------------------------
-
-Q44. What does # mean in a selector?
-
-Answer:
-
-ID.
-
-
------------------------------------------------------------
-
-Q45. What does . mean in a selector?
-
-Answer:
-
-Class.
-
-
------------------------------------------------------------
-
-Q46. What does > mean?
-
-Answer:
-
-Direct child.
-
-
------------------------------------------------------------
-
-Q47. What does ".card .title" mean?
-
-Answer:
-
-Find .title inside .card.
-
-
------------------------------------------------------------
-
-Q48. What does ".card.title" mean?
-
-Answer:
-
-Find an element that has BOTH classes:
-
-card
-AND
-title
-
-
------------------------------------------------------------
-
-Q49. What happens when no element matches?
-
-Answer:
-
-null
-
-
------------------------------------------------------------
-
-Q50. Can querySelector() be called on an element?
-
-Answer:
-
-YES.
-
-Example:
-
-const card =
-    document.querySelector(".card");
-
-const title =
-    card.querySelector(".title");
-
-
------------------------------------------------------------
-
-Q51. What does querySelectorAll() return?
-
-Answer:
-
-A NodeList.
-
-
------------------------------------------------------------
-
-Q52. What should React developers generally use
-instead of querySelector() for DOM references?
-
-Answer:
-
-useRef()
-
-
-===========================================================
-              FINAL PRACTICE CHALLENGE
-===========================================================
-
-
-Q53. What will this code select?
-
-HTML:
-
-<div class="container">
-
-    <button class="btn">
-        Button 1
-    </button>
-
-    <button class="btn">
-        Button 2
-    </button>
-
-</div>
 
 
 JavaScript:
 
 const button =
-    document.querySelector(
-        ".container .btn"
-    );
+    document.querySelector(".submit-btn");
 
 
-Answer:
-
-It selects:
-
-Button 1
-
-
-Why?
-
-Because querySelector() returns the FIRST match.
-
-
------------------------------------------------------------
-
-Q54. What will this select?
-
-const button =
-    document.querySelector(
-        ".container > .btn"
-    );
-
-
-Answer:
-
-Button 1
-
-
-Because both buttons are direct children of
-.container.
-
-Again, only the FIRST matching button is returned.
-
-
------------------------------------------------------------
-
-Q55. What will this select?
-
-const button =
-    document.querySelectorAll(
-        ".container > .btn"
-    );
-
-
-Answer:
-
-Both buttons.
-
-Because querySelectorAll() returns ALL matches.
-
-
-===========================================================
-                FINAL MENTAL MODEL
-===========================================================
-
-
-Think about querySelector() like this:
-
-
-                CSS SELECTOR
-                     ↓
-              querySelector()
-                     ↓
-              SEARCH THE DOM
-                     ↓
-             FIRST MATCH FOUND
-                     ↓
-                 ELEMENT
-                     ↓
-          READ / MODIFY / EVENT
-
-
-Example:
-
-
-const button =
-    document.querySelector(".add-cart");
-
-              ↓
-
-        FIND THE BUTTON
-
-              ↓
+Then:
 
 button.addEventListener("click", () => {
 
-    console.log("Added to cart");
+    console.log("Submitted");
 
 });
 
 
-The complete pattern is:
+This connects the HTML element to JavaScript behavior.
 
 
-SELECT
-  ↓
-STORE
-  ↓
-USE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q18. Can querySelector() select an element based on multiple conditions?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-
-===========================================================
-          WHAT A MERN DEVELOPER MUST KNOW
-===========================================================
-
-
-MUST KNOW:
-
-[✓] What querySelector() does
-
-[✓] First-match rule
-
-[✓] Tag selectors
-
-[✓] ID selectors
-
-[✓] Class selectors
-
-[✓] Multiple classes
-
-[✓] Descendant selectors
-
-[✓] Direct child selector
-
-[✓] Basic attribute selectors
-
-[✓] data-* selectors
-
-[✓] null when no match exists
-
-[✓] querySelectorAll() difference
-
-[✓] Scoped querySelector()
-
-[✓] Using the selected element
-
-[✓] Common selector mistakes
-
-[✓] DOMContentLoaded basics
-
-[✓] Why React normally avoids manual DOM manipulation
-
-[✓] useRef() for legitimate DOM references
-
-
-NOT NECESSARY TO MEMORIZE:
-
-[ ] Every advanced CSS selector
-
-[ ] Rare selector combinations
-
-[ ] Dozens of obscure DOM APIs
-
-
-===========================================================
-                 GOLDEN RULE
-===========================================================
-
-
-querySelector()
-
-=
-
-"Give me a CSS selector and I will return
-the FIRST matching DOM element."
-
+Yes.
 
 Example:
 
-document.querySelector(".card");
-
-
-Means:
-
-Find the first element having:
-
-class="card"
-
-
-And remember:
-
-
-querySelector()
-        ↓
-      FIRST
-
-
-querySelectorAll()
-        ↓
-       ALL
-
-
-For a MERN developer, this distinction is one of
-the most important things to understand.
-===========================================================
-
-*/
-
-
-/*
-============================================================
-        JAVASCRIPT querySelector() — COMPLETE PRACTICE
-============================================================
-
-------------------------------------------------------------
-Q1. What is querySelector()?
-------------------------------------------------------------
-
-Answer:
-
-querySelector() is a JavaScript DOM method used to find the
-FIRST element that matches a given CSS selector.
-
-Syntax:
-
-const element = document.querySelector("selector");
-
-
-Example:
-
-const heading = document.querySelector("h1");
-
-If the HTML is:
-
-<h1>Hello</h1>
-<h1>World</h1>
-
-Then:
-
-heading
-
-refers only to:
-
-<h1>Hello</h1>
-
-Because querySelector() returns the FIRST matching element.
-
-
-------------------------------------------------------------
-Q2. What does querySelector() return?
-------------------------------------------------------------
-
-Answer:
-
-It returns:
-
-1. The first matching Element
-2. null if no element matches
-
-
-Example:
-
-const button = document.querySelector(".btn");
-
-If .btn exists:
-
-button → Element
-
-
-If .btn does not exist:
-
-button → null
-
-
-------------------------------------------------------------
-Q3. Why is it called querySelector?
-------------------------------------------------------------
-
-Answer:
-
-Because you give it a CSS selector as a "query".
-
-For example:
-
-document.querySelector(".card");
-
-document.querySelector("#login");
-
-document.querySelector("button");
-
-document.querySelector("[data-id='123']");
-
-
-This makes querySelector() extremely flexible.
-
-
-------------------------------------------------------------
-Q4. How do you select an element by tag name?
-------------------------------------------------------------
-
-Answer:
-
-Use the tag name directly.
-
-HTML:
-
-<h1>Hello</h1>
-
-JavaScript:
-
-const heading = document.querySelector("h1");
-
-
-For:
-
-<button>Login</button>
-
-Use:
-
-const button = document.querySelector("button");
-
-
-------------------------------------------------------------
-Q5. How do you select an element by ID?
-------------------------------------------------------------
-
-Answer:
-
-Use # followed by the ID.
-
-HTML:
-
-<div id="profile"></div>
-
-JavaScript:
-
-const profile = document.querySelector("#profile");
-
-
-# means:
-
-"Find the element whose id is profile."
-
-
-------------------------------------------------------------
-Q6. How do you select an element by class?
-------------------------------------------------------------
-
-Answer:
-
-Use . followed by the class name.
-
-HTML:
-
-<div class="card"></div>
-
-JavaScript:
-
-const card = document.querySelector(".card");
-
-
-. means:
-
-"Find an element having this class."
-
-
-------------------------------------------------------------
-Q7. What is the difference between # and .?
-------------------------------------------------------------
-
-Answer:
-
-# → ID
-
-. → Class
-
-
-Example:
-
-#login
-
-means:
-
-element with id="login"
-
-
-.card
-
-means:
-
-element with class="card"
-
-
-------------------------------------------------------------
-Q8. What happens if multiple elements have the same class?
-------------------------------------------------------------
-
-Answer:
-
-querySelector() returns only the FIRST matching element.
-
-
-HTML:
-
-<div class="card">A</div>
-<div class="card">B</div>
-<div class="card">C</div>
-
-
-JavaScript:
-
-const card = document.querySelector(".card");
-
-
-Only:
-
-A
-
-is selected.
-
-
-If you want ALL matching elements:
-
-document.querySelectorAll(".card");
-
-
-------------------------------------------------------------
-Q9. How do you select an element having multiple classes?
-------------------------------------------------------------
-
-HTML:
-
-<div class="card active"></div>
-
-
-JavaScript:
-
-const element = document.querySelector(".card.active");
-
-
-Important:
-
-.card.active
-
-means:
-
-"Element having BOTH card AND active classes."
-
-
-------------------------------------------------------------
-Q10. What is the difference between these two selectors?
-
-.card.active
-
-.card .active
-------------------------------------------------------------
-
-Answer:
-
-.card.active
-
-means:
-
-Same element has both classes.
-
-Example:
-
-<div class="card active"></div>
-
-
-.card .active
-
-means:
-
-An element with class active INSIDE an element with class card.
-
-
-Example:
-
-<div class="card">
-    <button class="active">Buy</button>
-</div>
-
-
-This distinction is extremely important.
-
-
-------------------------------------------------------------
-Q11. How do you select a nested element?
-------------------------------------------------------------
-
-HTML:
-
-<div class="card">
-    <button class="buy">Buy</button>
-</div>
-
-
-JavaScript:
-
-const button = document.querySelector(".card .buy");
-
-
-Meaning:
-
-Find .buy inside .card.
-
-
-------------------------------------------------------------
-Q12. What does the > selector mean?
-------------------------------------------------------------
-
-Answer:
-
-> means DIRECT CHILD.
-
-
-HTML:
-
-<div class="card">
-    <button class="buy">Buy</button>
-</div>
-
-
-You can write:
-
-const button = document.querySelector(
-    ".card > .buy"
-);
-
-
-This means:
-
-Find .buy that is a direct child of .card.
-
-
-------------------------------------------------------------
-Q13. What is the difference between a space and >?
-------------------------------------------------------------
-
-Answer:
-
-Space:
-
-.card .button
-
-means .button can be anywhere inside .card.
-
-
->:
-
-.card > .button
-
-means .button must be a DIRECT child.
-
-
-Example:
-
-<div class="card">
-
-    <div>
-        <button class="button"></button>
-    </div>
-
-</div>
-
-
-.card .button
-
-will find the button.
-
-
-.card > .button
-
-will NOT find it.
-
-
-------------------------------------------------------------
-Q14. How do you select an element by attribute?
-------------------------------------------------------------
-
-Answer:
-
-Use:
-
-[attribute]
-
-
-Example:
-
-<input type="email">
-
-
-JavaScript:
-
-const input = document.querySelector(
-    "[type='email']"
-);
-
-
-You can also use:
-
-document.querySelector("[disabled]");
-
-
-This finds an element having the disabled attribute.
-
-
-------------------------------------------------------------
-Q15. How do you select an element using data-* attributes?
-------------------------------------------------------------
-
-HTML:
-
-<button data-product-id="101">
-    Buy
-</button>
-
-
-JavaScript:
-
-const button = document.querySelector(
-    "[data-product-id='101']"
-);
-
-
-This is very useful in real applications.
-
-
-For example:
-
-<button data-user-id="25">
+<button
+    class="btn active"
+    data-role="admin"
+>
     Delete
 </button>
 
 
-JavaScript:
+You can write:
 
-const deleteButton = document.querySelector(
-    "[data-user-id='25']"
-);
-
-
-------------------------------------------------------------
-Q16. How do you select an element using multiple conditions?
-------------------------------------------------------------
-
-HTML:
-
-<button class="btn primary" data-action="buy">
-    Buy
-</button>
-
-
-JavaScript:
-
-const button = document.querySelector(
-    ".btn.primary[data-action='buy']"
-);
+const button =
+    document.querySelector(
+        '.btn.active[data-role="admin"]'
+    );
 
 
 This means:
 
-class = btn
+Find an element that:
 
-AND
+- has class btn
+- has class active
+- has data-role="admin"
 
-class = primary
 
-AND
+You don't need this every day, but you should understand the concept.
 
-data-action = buy
 
-
-------------------------------------------------------------
-Q17. Can querySelector() select an element using its ID and class together?
-------------------------------------------------------------
-
-Yes.
-
-HTML:
-
-<div id="profile" class="card"></div>
-
-
-JavaScript:
-
-const element = document.querySelector(
-    "#profile.card"
-);
-
-
-This means:
-
-Find the element having:
-
-id = profile
-
-AND
-
-class = card.
-
-
-------------------------------------------------------------
-Q18. Can querySelector() use normal CSS selectors?
-------------------------------------------------------------
-
-Yes.
-
-You can use many CSS selectors.
-
-Examples:
-
-h1
-
-.card
-
-#login
-
-.card.active
-
-.card .button
-
-.card > .button
-
-input[type="email"]
-
-[data-user-id="10"]
-
-button:hover
-
-li:first-child
-
-li:nth-child(2)
-
-
-You do NOT need to memorize every CSS selector.
-
-For MERN development, the common ones are enough.
-
-
-------------------------------------------------------------
-Q19. What happens if querySelector() cannot find anything?
-------------------------------------------------------------
-
-Answer:
-
-It returns:
-
-null
-
-
-Example:
-
-const button = document.querySelector(".does-not-exist");
-
-console.log(button);
-
-Output:
-
-null
-
-
-------------------------------------------------------------
-Q20. Why can this code cause an error?
-
-const button = document.querySelector(".btn");
-
-button.addEventListener("click", () => {
-    console.log("Clicked");
-});
-------------------------------------------------------------
-
-Answer:
-
-Because .btn might not exist.
-
-Then:
-
-button === null
-
-
-And:
-
-null.addEventListener(...)
-
-causes an error.
-
-
-Safer:
-
-const button = document.querySelector(".btn");
-
-if (button) {
-    button.addEventListener("click", () => {
-        console.log("Clicked");
-    });
-}
-
-
-This is important in real applications.
-
-
-------------------------------------------------------------
-Q21. What is the difference between document.querySelector()
-and element.querySelector()?
-------------------------------------------------------------
-
-Answer:
-
-Both work similarly.
-
-But the starting search location is different.
-
-
-document.querySelector():
-
-Searches the entire document.
-
-
-Example:
-
-const button = document.querySelector(".buy");
-
-
-element.querySelector():
-
-Searches inside a particular element.
-
-
-Example:
-
-const card = document.querySelector(".card");
-
-const button = card.querySelector(".buy");
-
-
-This means:
-
-"Find .buy inside this specific card."
-
-
-------------------------------------------------------------
-Q22. Why is element.querySelector() useful in real applications?
-------------------------------------------------------------
-
-Imagine an e-commerce page:
-
-<div class="product-card">
-    <h2>iPhone</h2>
-    <button class="buy">Buy</button>
-</div>
-
-<div class="product-card">
-    <h2>Samsung</h2>
-    <button class="buy">Buy</button>
-</div>
-
-
-If you already have one product card:
-
-const card = document.querySelector(".product-card");
-
-
-Then:
-
-const button = card.querySelector(".buy");
-
-
-Now you are specifically working with the button
-inside that product card.
-
-
-This prevents accidentally selecting a button
-from another part of the page.
-
-
-------------------------------------------------------------
-Q23. What is the difference between querySelector()
-and getElementById()?
-------------------------------------------------------------
-
-Answer:
-
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q19. What is the difference between querySelector() and getElementById()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 getElementById():
 
-document.getElementById("login");
+document.getElementById("loginButton");
 
 
 querySelector():
 
-document.querySelector("#login");
+document.querySelector("#loginButton");
 
 
-Both can find an ID.
+Both can find an element by ID.
 
 
-But querySelector() is more flexible because it supports
-CSS selectors.
+Main difference:
+
+getElementById()
+→ specifically designed for IDs
+
+
+querySelector()
+→ supports CSS selectors
 
 
 For example:
 
-document.querySelector(".card");
-
-document.querySelector("button");
-
-document.querySelector("[data-id='10']");
-
-document.querySelector(".card button");
+document.querySelector(".login-button");
 
 
-getElementById() only works with IDs.
+getElementById() cannot do this.
 
 
-------------------------------------------------------------
-Q24. Which is generally faster: getElementById()
-or querySelector()?
-------------------------------------------------------------
+Industry understanding:
 
-Answer:
-
-getElementById() is generally more specialized and can be
-slightly faster.
-
-But in normal MERN development, this performance difference
-is usually insignificant.
-
-Use:
+If you specifically need an ID:
 
 getElementById()
 
-when you specifically need an ID.
+is perfectly fine.
 
 
-Use:
+If you need flexible CSS selectors:
 
 querySelector()
 
-when you want flexible CSS selector syntax.
+is very useful.
 
 
-Do not choose APIs based only on tiny theoretical
-performance differences.
+The performance difference is usually not important for normal application code.
 
 
-------------------------------------------------------------
-Q25. What is the difference between querySelector()
-and querySelectorAll()?
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q20. What is the difference between querySelector() and querySelectorAll()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Answer:
-
+This is VERY important.
 
 querySelector():
 
@@ -2682,861 +758,447 @@ Returns ALL matching elements.
 
 Example:
 
-const button = document.querySelector(".btn");
+<button class="buy">Buy 1</button>
+<button class="buy">Buy 2</button>
+<button class="buy">Buy 3</button>
 
 
-Only first button.
+querySelector():
+
+const button =
+    document.querySelector(".buy");
 
 
-const buttons = document.querySelectorAll(".btn");
+Returns:
+
+Buy 1
 
 
-All matching buttons.
+querySelectorAll():
+
+const buttons =
+    document.querySelectorAll(".buy");
 
 
-------------------------------------------------------------
-Q26. What does querySelectorAll() return?
-------------------------------------------------------------
+Returns all three.
 
-Answer:
 
-It returns a:
+Remember:
+
+querySelector
+→ ONE
+
+
+querySelectorAll
+→ ALL
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q21. Is querySelectorAll() an Array?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+No.
+
+It returns a NodeList.
+
+Example:
+
+const buttons =
+    document.querySelectorAll(".buy");
+
+
+buttons is a:
 
 NodeList
 
 
-Example:
-
-const buttons = document.querySelectorAll(".btn");
-
-
-You can loop through it:
+It can be looped over:
 
 buttons.forEach((button) => {
+
     console.log(button);
+
 });
 
 
-Important:
-
-NodeList is not exactly the same thing as an Array.
+This distinction is useful when working with DOM code.
 
 
-------------------------------------------------------------
-Q27. Is the result of querySelector() an Array?
-------------------------------------------------------------
-
-No.
-
-querySelector() returns an:
-
-Element
-
-if a match exists.
-
-
-Example:
-
-const button = document.querySelector("button");
-
-
-button is NOT an array.
-
-
-------------------------------------------------------------
-Q28. Can you directly use array methods on querySelector()?
-------------------------------------------------------------
-
-No.
-
-Because querySelector() returns one Element.
-
-
-This is wrong conceptually:
-
-const buttons = document.querySelector(".btn");
-
-buttons.map(...);
-
-
-There is no array.
-
-
-For multiple elements:
-
-const buttons = document.querySelectorAll(".btn");
-
-
-Then:
-
-buttons.forEach(...);
-
-
-------------------------------------------------------------
-Q29. Can you modify the element returned by querySelector()?
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q22. Can querySelector() be used on an element instead of document?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Yes.
 
+This is an important concept.
+
 Example:
 
-const heading = document.querySelector("h1");
-
-heading.textContent = "Welcome";
-
-
-You can also:
-
-heading.style.fontSize = "30px";
+const product =
+    document.querySelector(".product");
 
 
-heading.classList.add("active");
+Now:
+
+const title =
+    product.querySelector(".title");
 
 
-heading.classList.remove("hidden");
+This means:
+
+Search for .title
+ONLY INSIDE this product element.
 
 
-heading.setAttribute("data-status", "active");
+This is called scoped selection.
 
 
-------------------------------------------------------------
-Q30. Give a real-world login form example using querySelector().
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q23. Why is scoped selection useful?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-HTML:
+Imagine an e-commerce page:
 
-<form id="loginForm">
+<div class="product">
 
-    <input
-        class="email"
-        type="email"
-    >
+    <h2 class="title">Laptop</h2>
 
-    <input
-        class="password"
-        type="password"
-    >
+</div>
 
-    <button type="submit">
-        Login
-    </button>
+<div class="product">
 
-</form>
+    <h2 class="title">Phone</h2>
+
+</div>
 
 
-JavaScript:
+If you do:
 
-const form = document.querySelector("#loginForm");
-
-const email = form.querySelector(".email");
-
-const password = form.querySelector(".password");
+document.querySelector(".title");
 
 
-form.addEventListener("submit", (event) => {
+You get:
 
-    event.preventDefault();
-
-    console.log(email.value);
-    console.log(password.value);
-
-});
+Laptop
 
 
-This is a common DOM pattern:
-
-1. Find container
-2. Find elements inside it
-3. Listen for event
-4. Read values
-5. Perform logic/API request
+because it returns the first matching element.
 
 
-------------------------------------------------------------
-Q31. How would you select the search input in an e-commerce website?
-------------------------------------------------------------
+But if you already have the second product:
+
+const products =
+    document.querySelectorAll(".product");
+
+const secondProduct =
+    products[1];
+
+const title =
+    secondProduct.querySelector(".title");
+
+
+Now you get:
+
+Phone
+
+
+This becomes useful when dealing with repeated UI components.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q24. What does querySelector() return?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+It returns:
+
+Element
+
+OR
+
+null
+
+
+Example:
+
+const button =
+    document.querySelector(".buy");
+
+
+If found:
+
+Element
+
+
+If not found:
+
+null
+
+
+This is important for error handling.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q25. What can we do after selecting an element?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A LOT.
+
+After:
+
+const title =
+    document.querySelector("#title");
+
+
+You can:
+
+READ:
+
+title.textContent
+
+
+CHANGE TEXT:
+
+title.textContent = "Products";
+
+
+CHANGE CLASS:
+
+title.classList.add("active");
+
+
+REMOVE CLASS:
+
+title.classList.remove("active");
+
+
+ADD EVENT:
+
+title.addEventListener("click", handleClick);
+
+
+CHANGE STYLE:
+
+title.style.display = "none";
+
+
+READ INPUT:
+
+input.value
+
+
+So:
+
+querySelector()
+
+is mainly the FIND part.
+
+Then JavaScript can READ or MODIFY the element.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q26. Real industry example — Product Search
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 HTML:
 
 <input
-    class="search-input"
-    type="text"
+    id="searchInput"
     placeholder="Search products"
 >
 
 
 JavaScript:
 
-const searchInput = document.querySelector(
-    ".search-input"
-);
+const searchInput =
+    document.querySelector("#searchInput");
 
 
 Then:
 
 searchInput.addEventListener("input", () => {
 
-    console.log(searchInput.value);
+    const searchText =
+        searchInput.value;
+
+    console.log(searchText);
 
 });
 
 
-In a real MERN application, this value could be used
-to filter products or trigger an API request.
+User types:
 
+laptop
 
-------------------------------------------------------------
-Q32. How would you select a specific product using
-a data attribute?
-------------------------------------------------------------
 
-HTML:
+The application receives:
 
-<div class="product" data-product-id="123">
-    <h2>Laptop</h2>
-</div>
+"laptop"
 
 
-JavaScript:
+Then normally:
 
-const product = document.querySelector(
-    "[data-product-id='123']"
-);
+React/frontend
+        ↓
+API request
+        ↓
+Express
+        ↓
+Database
+        ↓
+Products
+        ↓
+UI
 
 
-This is useful for connecting DOM elements with
-application data.
+In a real MERN application, React usually handles this through
+state instead of manually using querySelector(), but the DOM concept
+behind the browser still matters.
 
 
-------------------------------------------------------------
-Q33. How do you select the first button inside a form?
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q27. What is the relationship between querySelector() and events?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-HTML:
+Very important.
 
-<form>
-    <input>
-    <button>Login</button>
-</form>
+First:
 
-
-JavaScript:
-
-const button = document.querySelector(
-    "form button"
-);
-
-
-------------------------------------------------------------
-Q34. How do you select only direct button children of a form?
-------------------------------------------------------------
-
-JavaScript:
-
-const button = document.querySelector(
-    "form > button"
-);
-
-
-Remember:
-
-space = descendant
-
-> = direct child
-
-
-------------------------------------------------------------
-Q35. What does this selector mean?
-
-input[type="email"]
-------------------------------------------------------------
-
-Answer:
-
-Find an input element whose type attribute is exactly:
-
-email
-
-
-Example:
-
-<input type="email">
-
-
-It is called an:
-
-Attribute selector.
-
-
-------------------------------------------------------------
-Q36. What does this selector mean?
-
-button[data-action="delete"]
-------------------------------------------------------------
-
-Answer:
-
-Find a button having:
-
-data-action="delete"
-
-
-Example:
-
-<button data-action="delete">
-    Delete
-</button>
-
-
-This pattern is extremely useful with event delegation.
-
-
-------------------------------------------------------------
-Q37. What does this selector mean?
-
-.card .price
-------------------------------------------------------------
-
-Answer:
-
-Find an element with class:
-
-price
-
-inside an element with class:
-
-card.
-
-
-Example:
-
-<div class="card">
-
-    <span class="price">
-        $500
-    </span>
-
-</div>
-
-
-------------------------------------------------------------
-Q38. What does this selector mean?
-
-.card > .price
-------------------------------------------------------------
-
-Answer:
-
-Find .price only when it is a DIRECT child of .card.
-
-
-------------------------------------------------------------
-Q39. What does this selector mean?
-
-.card.active
-------------------------------------------------------------
-
-Answer:
-
-Find one element that has BOTH:
-
-card
-
-AND
-
-active
-
-
-Example:
-
-<div class="card active"></div>
-
-
-------------------------------------------------------------
-Q40. What does this selector mean?
-
-.card, .product, .user
-------------------------------------------------------------
-
-Answer:
-
-The comma means:
-
-OR.
-
-
-It selects an element matching:
-
-.card
-
-OR
-
-.product
-
-OR
-
-.user
-
-
-However, remember:
-
-querySelector()
-
-still returns only the FIRST matching element.
-
-
-------------------------------------------------------------
-Q41. What is wrong with this code?
-
-const buttons = document.querySelector(".btn");
-
-buttons.forEach((button) => {
-    console.log(button);
-});
-------------------------------------------------------------
-
-Answer:
-
-querySelector() returns ONE element.
-
-It does not return a collection.
-
-If you want multiple buttons:
-
-const buttons = document.querySelectorAll(".btn");
-
-buttons.forEach((button) => {
-    console.log(button);
-});
-
-
-------------------------------------------------------------
-Q42. What is wrong with this code?
-
-const card = document.querySelector(".card");
-
-console.log(card.querySelector(".price"));
-------------------------------------------------------------
-
-Answer:
-
-Nothing is inherently wrong.
-
-This is valid.
-
-But if:
-
-.card
-
-does not exist, then:
-
-card === null
-
-
-and:
-
-card.querySelector(...)
-
-will cause an error.
-
-
-Safer:
-
-const card = document.querySelector(".card");
-
-if (card) {
-
-    const price = card.querySelector(".price");
-
-}
-
-
-------------------------------------------------------------
-Q43. Why should you avoid overly complicated selectors?
-------------------------------------------------------------
-
-Example:
-
-document.querySelector(
-    "div.container > div.wrapper > div.card > span.price"
-);
-
-
-This can become fragile.
-
-If the HTML structure changes, the selector can break.
-
-
-Prefer stable selectors when possible:
-
-document.querySelector(".product-price");
-
-
-or:
-
-document.querySelector("[data-product-price]");
-
-
-The goal is maintainable code.
-
-
-------------------------------------------------------------
-Q44. Is using IDs always better than classes?
-------------------------------------------------------------
-
-No.
-
-It depends on the purpose.
-
-
-ID:
-
-Good for uniquely identifying one element.
-
-
-Class:
-
-Good for reusable elements/styles/components.
-
-
-Data attributes:
-
-Good for attaching application-related identifiers
-or behavior hooks.
-
-
-Example:
-
-#loginForm
-
-.product-card
-
-[data-product-id="123"]
-
-
-------------------------------------------------------------
-Q45. Why are data-* attributes useful for JavaScript?
-------------------------------------------------------------
-
-They allow you to attach custom data to HTML elements.
-
-
-Example:
-
-<button data-product-id="101">
-    Delete
-</button>
-
-
-JavaScript:
-
-const button = document.querySelector(
-    "[data-product-id='101']"
-);
-
-
-You can also access:
-
-button.dataset.productId;
-
-
-This gives:
-
-"101"
-
-
-------------------------------------------------------------
-Q46. What is the difference between querySelector()
-and querySelectorAll() in terms of use cases?
-------------------------------------------------------------
-
-Use querySelector() when:
-
-You need ONE element.
-
-
-Examples:
-
-Login form
-
-Search input
-
-Navbar
-
-Modal
-
-Main heading
-
-
-Use querySelectorAll() when:
-
-You need MULTIPLE elements.
-
-
-Examples:
-
-All product cards
-
-All buttons
-
-All navigation links
-
-All checkboxes
-
-
-------------------------------------------------------------
-Q47. Does querySelector() work only on document?
-------------------------------------------------------------
-
-No.
-
-It can be used on many DOM elements.
-
-
-Example:
-
-const card = document.querySelector(".card");
-
-const button = card.querySelector(".buy");
-
-
-The second query is scoped to card.
-
-
-------------------------------------------------------------
-Q48. Can querySelector() select pseudo-elements like ::before?
-------------------------------------------------------------
-
-No.
-
-Pseudo-elements such as:
-
-::before
-
-::after
-
-are not normal DOM elements that querySelector()
-can return.
-
-
-CSS handles those.
-
-
-------------------------------------------------------------
-Q49. Can querySelector() use CSS pseudo-classes?
-------------------------------------------------------------
-
-Yes, many CSS pseudo-classes can be used as selectors.
-
-
-Examples:
-
-button:first-child
-
-li:nth-child(2)
-
-input:checked
-
-
-But remember:
-
-These selectors select DOM elements based on their
-current state/position.
-
-
-------------------------------------------------------------
-Q50. What happens if you use an invalid CSS selector?
-------------------------------------------------------------
-
-querySelector() throws a SyntaxError.
-
-
-Example:
-
-document.querySelector("###");
-
-
-This is different from:
-
-No matching element.
-
-
-No match:
-
-returns null.
-
-
-Invalid selector:
-
-throws an error.
-
-
-------------------------------------------------------------
-Q51. What is the difference between null and an invalid selector?
-------------------------------------------------------------
-
-No matching element:
-
-document.querySelector(".unknown");
-
-Result:
-
-null
-
-
-Invalid selector:
-
-document.querySelector("###");
-
-Result:
-
-SyntaxError
-
-
-This distinction is important.
-
-
-------------------------------------------------------------
-Q52. When can querySelector() fail because of script timing?
-------------------------------------------------------------
-
-Suppose:
-
-<script src="script.js"></script>
-
-comes BEFORE:
-
-<button class="login">Login</button>
-
-
-JavaScript may execute before the button exists.
+const button =
+    document.querySelector("#loginButton");
 
 
 Then:
 
-document.querySelector(".login");
+button.addEventListener("click", () => {
+
+    console.log("Login clicked");
+
+});
+
+
+So the pattern is:
+
+FIND ELEMENT
+     ↓
+querySelector()
+     ↓
+GET ELEMENT
+     ↓
+addEventListener()
+     ↓
+RESPOND TO USER
+
+
+This pattern appears everywhere in vanilla JavaScript.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q28. What if JavaScript runs before HTML is loaded?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Suppose JavaScript runs before this exists:
+
+<button id="loginButton">
+    Login
+</button>
+
+
+Then:
+
+document.querySelector("#loginButton");
+
 
 may return:
 
 null
 
 
-Solutions include:
+A common solution is to use:
 
-1. Put script at the end of body
-
-2. Use defer
-
-<script defer src="script.js"></script>
-
-3. Use DOMContentLoaded
+<script src="script.js" defer></script>
 
 
-------------------------------------------------------------
-Q53. What is DOMContentLoaded?
-------------------------------------------------------------
-
-It is an event that fires when the HTML document
-has been completely parsed.
+Or place the script appropriately in the page.
 
 
-Example:
+Another option:
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-        const button =
-            document.querySelector(".login");
+    const button =
+        document.querySelector("#loginButton");
 
-    }
-);
+});
 
 
-This ensures the HTML elements have been parsed.
+For modern applications, understanding script timing is enough.
 
 
-------------------------------------------------------------
-Q54. Is querySelector() important for a MERN developer?
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q29. Do MERN developers use querySelector() frequently?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Yes, but you do NOT need to become a DOM expert.
+In React:
 
-You should understand:
-
-document.querySelector()
-
-element.querySelector()
-
-querySelectorAll()
-
-CSS selectors
-
-null handling
-
-class manipulation
-
-event listeners
-
-event.target
-
-event delegation
+Usually NO for normal UI work.
 
 
-These fundamentals are enough for most MERN work.
+Why?
+
+Because React manages the UI through:
+
+State
+Props
+Components
+Refs
 
 
-------------------------------------------------------------
-Q55. Do React developers use querySelector() frequently?
-------------------------------------------------------------
+For example, instead of:
 
-Usually, no.
+const title =
+    document.querySelector("#title");
 
-React encourages declarative UI development.
-
-
-Instead of:
-
-document.querySelector(".username")
-    .textContent = "Navneet";
+title.textContent = "Hello";
 
 
 React normally uses:
 
-const [username, setUsername] = useState("");
+const [title, setTitle] =
+    useState("Hello");
 
 
 Then:
 
-<h1>{username}</h1>
+<h1>{title}</h1>
 
 
-React controls the UI based on state.
+React manages the DOM update.
 
 
-------------------------------------------------------------
-Q56. So is querySelector() useless in React?
-------------------------------------------------------------
+However, you STILL need to understand querySelector()
+because it teaches you:
 
-No.
-
-There are situations where direct DOM access is useful.
-
-
-For example:
-
-Focus an input
-
-Measure an element
-
-Control a video
-
-Interact with browser APIs
-
-Integrate third-party DOM libraries
+- DOM
+- element selection
+- events
+- browser behavior
+- imperative programming
 
 
-React commonly provides:
+And you may occasionally work with existing DOM elements or
+third-party libraries.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q30. What should I use in React instead of querySelector()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For normal UI:
+
+React state and props.
+
+
+For directly accessing a specific DOM element:
 
 useRef()
 
@@ -3554,767 +1216,827 @@ Then:
 inputRef.current.focus();
 
 
-This is usually preferable to:
-
-document.querySelector("input");
+This is the React-friendly way to perform imperative DOM operations.
 
 
-when working inside a React component.
+Use querySelector() as your DOM knowledge foundation.
+
+Use React state/props for normal UI rendering.
+
+Use useRef() when you genuinely need direct DOM access.
 
 
-------------------------------------------------------------
-Q57. What is the biggest mistake when using querySelector()
-in React?
-------------------------------------------------------------
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q31. When might a MERN developer actually need direct DOM access?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Using manual DOM manipulation for things React should control.
+Some examples:
 
-
-For example, repeatedly doing:
-
-document.querySelector(".modal").style.display = "none";
-
-
-is usually a poor React pattern.
-
-
-Instead:
-
-const [isOpen, setIsOpen] = useState(false);
+- focusing an input
+- measuring an element
+- controlling a video
+- integrating a third-party DOM library
+- scrolling to an element
+- accessing browser APIs that require an element
+- handling certain canvas operations
 
 
-Then:
+In React, prefer:
 
-{isOpen && <Modal />}
-
-
-React manages the UI.
+useRef()
 
 
-------------------------------------------------------------
-Q58. What is event delegation and how does querySelector()
-relate to it?
-------------------------------------------------------------
+instead of:
 
-Suppose you have:
+document.querySelector()
 
-<div id="products">
 
-    <button data-id="1">Delete</button>
-    <button data-id="2">Delete</button>
-    <button data-id="3">Delete</button>
+for your component's own DOM elements.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q32. What are the most important selectors I should know?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For MERN development, focus on these:
+
+ID:
+
+"#login"
+
+
+Class:
+
+".card"
+
+
+Tag:
+
+"button"
+
+
+Descendant:
+
+".product .title"
+
+
+Multiple classes:
+
+".card.active"
+
+
+Direct child:
+
+".menu > .item"
+
+
+Attribute:
+
+"[data-id]"
+
+
+Specific attribute value:
+
+'[data-id="123"]'
+
+
+You do NOT need to memorize every CSS selector.
+
+
+These are enough for most DOM work.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q33. What is the difference between ".product .title" and
+".product > .title"?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+".product .title"
+
+means:
+
+.title exists anywhere inside .product.
+
+
+".product > .title"
+
+means:
+
+.title must be a DIRECT child of .product.
+
+
+Example:
+
+<div class="product">
+
+    <div>
+
+        <h2 class="title">
+            Laptop
+        </h2>
+
+    </div>
 
 </div>
 
 
-Instead of attaching listeners to every button:
+.product .title
 
-const container = document.querySelector("#products");
+→ finds it.
 
-container.addEventListener("click", (event) => {
 
-    if (event.target.matches("button")) {
+.product > .title
 
-        console.log(
-            event.target.dataset.id
-        );
+→ does NOT find it because .title is not a direct child.
 
-    }
 
-});
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q34. What are common mistakes with querySelector()?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+Mistake 1:
 
-This is called:
+document.querySelector("login");
 
-Event Delegation.
 
+when the element is:
 
-querySelector() is commonly used to select the
-parent/container where the delegated event listener
-is attached.
+id="login"
 
 
-------------------------------------------------------------
-Q59. What is a stable selector?
-------------------------------------------------------------
+Correct:
 
-A stable selector is a selector that is unlikely to
-change when the UI structure changes.
+document.querySelector("#login");
 
 
-Fragile:
+Mistake 2:
 
-document.querySelector(
-    "div.container > div:nth-child(2) > button"
-);
+Using querySelector() when you need all elements.
 
 
-More stable:
-
-document.querySelector(
-    "[data-action='delete']"
-);
-
-
-or:
-
-document.querySelector(
-    ".delete-button"
-);
-
-
-Stable selectors improve maintainability.
-
-
-------------------------------------------------------------
-Q60. Should you use nth-child() everywhere?
-------------------------------------------------------------
-
-No.
-
-Example:
-
-document.querySelector(
-    ".products > div:nth-child(4)"
-);
-
-
-This depends heavily on the position of the element.
-
-
-If products are reordered, the selector may target
-a different product.
-
-
-Prefer:
-
-[data-product-id]
-
-or a meaningful class when appropriate.
-
-
-------------------------------------------------------------
-Q61. What are the most important selectors a MERN developer
-should know?
-------------------------------------------------------------
-
-You should be comfortable with:
-
-1. Tag
-
-h1
-
-
-2. ID
-
-#login
-
-
-3. Class
-
-.card
-
-
-4. Multiple classes
-
-.card.active
-
-
-5. Descendant
-
-.card .button
-
-
-6. Direct child
-
-.card > .button
-
-
-7. Attribute
-
-input[type="email"]
-
-
-8. Data attribute
-
-[data-id="123"]
-
-
-9. Multiple selectors
-
-.card, .product
-
-
-10. Pseudo-classes
-
-li:first-child
-
-input:checked
-
-li:nth-child(2)
-
-
-That is more than enough for normal MERN development.
-
-
-------------------------------------------------------------
-Q62. What is the correct mental model for querySelector()?
-------------------------------------------------------------
-
-Think:
-
-"Give me the FIRST DOM element that matches
-this CSS selector."
-
-
-Example:
+Wrong:
 
 document.querySelector(".product");
 
 
-means:
+Correct:
 
-"Find the first element with class product."
+document.querySelectorAll(".product");
 
 
-------------------------------------------------------------
-Q63. What is the complete DOM selection flow?
-------------------------------------------------------------
+Mistake 3:
+
+Not checking null when the element may not exist.
+
+
+Mistake 4:
+
+Trying to use DOM manipulation everywhere in React.
+
+
+Mistake 5:
+
+Writing overly complicated selectors when a simple class or
+data attribute would be clearer.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q35. What is the most important mental model?
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Think:
 
 HTML
-  ↓
-DOM
-  ↓
-querySelector()
-  ↓
-Element
-  ↓
-Read / Modify / Listen
-
-
-Example:
-
-const button = document.querySelector(".buy");
-
-button.textContent = "Purchased";
-
-button.classList.add("success");
-
-button.addEventListener("click", () => {
-    console.log("Buying...");
-});
-
-
-This is the fundamental DOM workflow.
-
-
-============================================================
-              REAL INTERVIEW QUESTIONS
-============================================================
-
-
-------------------------------------------------------------
-Q64. Interviewer: What does querySelector() return?
-------------------------------------------------------------
-
-Answer:
-
-"It returns the first Element in the document that matches
-the specified CSS selector. If no matching element exists,
-it returns null."
-
-
-------------------------------------------------------------
-Q65. Interviewer: querySelector() vs querySelectorAll()?
-------------------------------------------------------------
-
-Answer:
-
-"querySelector() returns the first matching Element,
-whereas querySelectorAll() returns a NodeList containing
-all matching elements."
-
-
-------------------------------------------------------------
-Q66. Interviewer: Can querySelector() search inside an element?
-------------------------------------------------------------
-
-Answer:
-
-"Yes. querySelector() can be called on an Element, in which
-case the search is scoped to that element's descendants."
-
-
-Example:
-
-const card = document.querySelector(".card");
-
-const button = card.querySelector(".buy");
-
-
-------------------------------------------------------------
-Q67. Interviewer: What happens when querySelector()
-finds nothing?
-------------------------------------------------------------
-
-Answer:
-
-"It returns null."
-
-
-------------------------------------------------------------
-Q68. Interviewer: What happens with an invalid selector?
-------------------------------------------------------------
-
-Answer:
-
-"It throws a SyntaxError."
-
-
-------------------------------------------------------------
-Q69. Interviewer: Is querySelector() an Array method?
-------------------------------------------------------------
-
-Answer:
-
-"No. It is a DOM method available on Document and Element
-objects. It returns an Element or null."
-
-
-------------------------------------------------------------
-Q70. Interviewer: Why might querySelector() return null
-even though the element exists in the HTML?
-------------------------------------------------------------
-
-Answer:
-
-Possible reasons include:
-
-1. JavaScript runs before the element is parsed.
-
-2. The selector is incorrect.
-
-3. The element is dynamically created later.
-
-4. The element exists in a different document/context.
-
-
-A common solution for timing issues is:
-
-defer
-
-or
-
-DOMContentLoaded.
-
-
-------------------------------------------------------------
-Q71. Interviewer: Why would you use querySelector()
-instead of getElementById()?
-------------------------------------------------------------
-
-Answer:
-
-"querySelector() supports the full CSS selector syntax,
-so it is more flexible. getElementById() is specialized
-for selecting an element by ID."
-
-
-------------------------------------------------------------
-Q72. Interviewer: Is querySelector() commonly used in React?
-------------------------------------------------------------
-
-Answer:
-
-"Not for normal UI state management. React generally manages
-the DOM declaratively. For imperative DOM operations, refs
-such as useRef() are usually preferred inside components."
-
-
-============================================================
-              PRACTICE CODING QUESTIONS
-============================================================
-
-
-------------------------------------------------------------
-Q73. Select the first element with class "product".
-------------------------------------------------------------
-
-Answer:
-
-const product = document.querySelector(".product");
-
-
-------------------------------------------------------------
-Q74. Select the element with ID "loginForm".
-------------------------------------------------------------
-
-Answer:
-
-const form = document.querySelector("#loginForm");
-
-
-------------------------------------------------------------
-Q75. Select the first button.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector("button");
-
-
-------------------------------------------------------------
-Q76. Select an email input.
-------------------------------------------------------------
-
-Answer:
-
-const email = document.querySelector(
-    "input[type='email']"
-);
-
-
-------------------------------------------------------------
-Q77. Select an active card.
-------------------------------------------------------------
-
-Answer:
-
-const card = document.querySelector(
-    ".card.active"
-);
-
-
-------------------------------------------------------------
-Q78. Select the button inside a card.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector(
-    ".card .button"
-);
-
-
-------------------------------------------------------------
-Q79. Select a direct button child of a card.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector(
-    ".card > .button"
-);
-
-
-------------------------------------------------------------
-Q80. Select the product having product ID 101.
-------------------------------------------------------------
-
-HTML:
-
-<div class="product" data-product-id="101"></div>
-
-
-Answer:
-
-const product = document.querySelector(
-    "[data-product-id='101']"
-);
-
-
-------------------------------------------------------------
-Q81. Select all product cards.
-------------------------------------------------------------
-
-Answer:
-
-const products = document.querySelectorAll(
-    ".product"
-);
-
-
-------------------------------------------------------------
-Q82. Select the first delete button.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector(
-    ".delete-button"
-);
-
-
-------------------------------------------------------------
-Q83. Change the text of the first heading to "Dashboard".
-------------------------------------------------------------
-
-Answer:
-
-const heading = document.querySelector("h1");
-
-heading.textContent = "Dashboard";
-
-
-------------------------------------------------------------
-Q84. Add an "active" class to the first menu item.
-------------------------------------------------------------
-
-Answer:
-
-const item = document.querySelector(".menu-item");
-
-item.classList.add("active");
-
-
-------------------------------------------------------------
-Q85. Add a click event to the first button.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector("button");
-
-button.addEventListener("click", () => {
-
-    console.log("Button clicked");
-
-});
-
-
-------------------------------------------------------------
-Q86. Safely add a click event if the button may not exist.
-------------------------------------------------------------
-
-Answer:
-
-const button = document.querySelector("button");
-
-if (button) {
-
-    button.addEventListener("click", () => {
-        console.log("Clicked");
-    });
-
-}
-
-
-------------------------------------------------------------
-Q87. Find the price inside a specific product card.
-------------------------------------------------------------
-
-Answer:
-
-const card = document.querySelector(".product-card");
-
-const price = card.querySelector(".price");
-
-
-This is better than searching the entire document
-when you already know the card you want.
-
-
-============================================================
-                  FINAL CHALLENGE
-============================================================
-
-
-HTML:
-
-<div class="product-card" data-product-id="101">
-
-    <h2 class="product-name">
-        Laptop
-    </h2>
-
-    <span class="price">
-        $999
-    </span>
-
-    <button
-        class="buy-button"
-        data-action="buy">
-        Buy
-    </button>
-
-</div>
-
-
-------------------------------------------------------------
-Q88. Select the product card.
-------------------------------------------------------------
-
-Answer:
-
-const card = document.querySelector(
-    ".product-card"
-);
-
-
-------------------------------------------------------------
-Q89. Select the product name inside the card.
-------------------------------------------------------------
-
-Answer:
-
-const name = card.querySelector(
-    ".product-name"
-);
-
-
-------------------------------------------------------------
-Q90. Select the price inside the card.
-------------------------------------------------------------
-
-Answer:
-
-const price = card.querySelector(
-    ".price"
-);
-
-
-------------------------------------------------------------
-Q91. Select the buy button inside the card.
-------------------------------------------------------------
-
-Answer:
-
-const buyButton = card.querySelector(
-    ".buy-button"
-);
-
-
-------------------------------------------------------------
-Q92. Get the product ID.
-------------------------------------------------------------
-
-Answer:
-
-const productId = card.dataset.productId;
-
-Result:
-
-"101"
-
-
-------------------------------------------------------------
-Q93. Get the button's action.
-------------------------------------------------------------
-
-Answer:
-
-const action = buyButton.dataset.action;
-
-Result:
-
-"buy"
-
-
-------------------------------------------------------------
-Q94. Change the product name.
-------------------------------------------------------------
-
-Answer:
-
-name.textContent = "Gaming Laptop";
-
-
-------------------------------------------------------------
-Q95. Change the price.
-------------------------------------------------------------
-
-Answer:
-
-price.textContent = "$1299";
-
-
-------------------------------------------------------------
-Q96. Add a click event to the Buy button.
-------------------------------------------------------------
-
-Answer:
-
-buyButton.addEventListener("click", () => {
-
-    console.log("Buying product:", productId);
-
-});
-
-
-============================================================
-              WHAT YOU ACTUALLY NEED TO MASTER
-============================================================
-
-For MERN development, make sure you can confidently use:
-
-1. document.querySelector()
-
-2. element.querySelector()
-
-3. querySelectorAll()
-
-4. CSS selectors
-
-5. #id
-
-6. .class
-
-7. .class1.class2
-
-8. .parent .child
-
-9. .parent > .child
-
-10. [attribute="value"]
-
-11. [data-id="123"]
-
-12. null handling
-
-13. textContent
-
-14. classList
-
-15. addEventListener()
-
-16. event.target
-
-17. event delegation
-
-18. dataset
-
-19. DOM timing
-
-20. React useRef()
-
-
-FINAL MENTAL MODEL:
-
-querySelector()
-        ↓
+ ↓
 CSS selector
-        ↓
-FIRST matching element
-        ↓
-Element / null
-        ↓
-Read / Modify / Listen
-
-
-And remember the most important distinction:
-
+ ↓
 querySelector()
-        → FIRST match
+ ↓
+Element / null
+ ↓
+Read / Change / Listen
+
+
+Example:
+
+<button id="buyButton">
+    Buy
+</button>
+
+
+        ↓
+
+
+const button =
+    document.querySelector("#buyButton");
+
+
+        ↓
+
+
+button.addEventListener("click", () => {
+
+    console.log("Product purchased");
+
+});
+
+
+That's the complete basic flow.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                    INTERVIEW QUESTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q36. What does querySelector() do?
+
+ANSWER:
+
+It finds and returns the first element that matches a CSS selector.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q37. What does querySelector() return if nothing matches?
+
+ANSWER:
+
+null
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q38. How do you select an element with id="user"?
+
+ANSWER:
+
+document.querySelector("#user");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q39. How do you select an element with class="card"?
+
+ANSWER:
+
+document.querySelector(".card");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q40. How do you select a button?
+
+ANSWER:
+
+document.querySelector("button");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q41. Does querySelector() return all matching elements?
+
+ANSWER:
+
+No.
+
+It returns only the first matching element.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q42. Which method returns all matching elements?
+
+ANSWER:
 
 querySelectorAll()
-        → ALL matches
 
 
-For a MERN developer, you don't need to memorize hundreds
-of CSS selectors. You need to understand how selectors work
-and be able to read/write the common ones confidently.
-============================================================
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q43. What does querySelectorAll() return?
+
+ANSWER:
+
+A NodeList.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q44. What is the difference between these?
+
+document.querySelector(".card");
+
+document.querySelectorAll(".card");
+
+
+ANSWER:
+
+querySelector()
+→ first matching element
+
+
+querySelectorAll()
+→ all matching elements
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q45. What happens here?
+
+const button =
+    document.querySelector("#login");
+
+button.addEventListener("click", handleLogin);
+
+
+What if #login doesn't exist?
+
+
+ANSWER:
+
+querySelector() returns null.
+
+Then calling addEventListener() on null causes an error.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q46. What does ".card.active" mean?
+
+ANSWER:
+
+Find one element that has BOTH:
+
+card
+
+and
+
+active
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q47. What does ".card .active" mean?
+
+ANSWER:
+
+Find an element with class active somewhere inside an element with
+class card.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q48. Can querySelector() be used on an element?
+
+ANSWER:
+
+Yes.
+
+Example:
+
+const product =
+    document.querySelector(".product");
+
+const title =
+    product.querySelector(".title");
+
+
+The second search happens only inside product.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q49. Why are data-* attributes useful?
+
+ANSWER:
+
+They allow us to attach custom data to HTML elements.
+
+Example:
+
+data-product-id="123"
+
+
+They are especially useful for identifying dynamic items.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q50. Should a React developer use querySelector() for every UI change?
+
+ANSWER:
+
+No.
+
+React normally manages UI through:
+
+state
+props
+components
+
+For direct DOM access, useRef() is generally preferred.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+                    PRACTICE QUESTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q51. Select this element:
+
+<h1 id="heading">
+    Products
+</h1>
+
+
+ANSWER:
+
+const heading =
+    document.querySelector("#heading");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q52. Select this element:
+
+<button class="buy-btn">
+    Buy
+</button>
+
+
+ANSWER:
+
+const button =
+    document.querySelector(".buy-btn");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q53. Select the first input:
+
+<input>
+<input>
+<input>
+
+
+ANSWER:
+
+const input =
+    document.querySelector("input");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q54. Select all inputs.
+
+ANSWER:
+
+const inputs =
+    document.querySelectorAll("input");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q55. Select an element having both "card" and "active".
+
+ANSWER:
+
+const element =
+    document.querySelector(".card.active");
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q56. Select a product with data-product-id="101".
+
+ANSWER:
+
+const product =
+    document.querySelector(
+        '[data-product-id="101"]'
+    );
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q57. What will this return?
+
+HTML:
+
+<div class="card">Laptop</div>
+
+<div class="card">Phone</div>
+
+
+JavaScript:
+
+const card =
+    document.querySelector(".card");
+
+
+ANSWER:
+
+It returns only:
+
+Laptop
+
+
+because querySelector() returns the first match.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q58. What will this return?
+
+const cards =
+    document.querySelectorAll(".card");
+
+
+ANSWER:
+
+Both cards.
+
+The result is a NodeList containing:
+
+Laptop
+Phone
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q59. Write code to change this:
+
+<h1 id="title">Old Title</h1>
+
+
+to:
+
+New Title
+
+
+ANSWER:
+
+const title =
+    document.querySelector("#title");
+
+title.textContent = "New Title";
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q60. Write code to add a click event to:
+
+<button id="buyButton">
+    Buy
+</button>
+
+
+ANSWER:
+
+const button =
+    document.querySelector("#buyButton");
+
+button.addEventListener("click", () => {
+
+    console.log("Buy clicked");
+
+});
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+Q61. FINAL PRACTICE — LOGIN FORM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+HTML:
+
+<form id="loginForm">
+
+    <input id="email">
+
+    <input id="password">
+
+    <button id="loginButton">
+        Login
+    </button>
+
+</form>
+
+
+Task:
+
+1. Select the form.
+2. Select email.
+3. Select password.
+4. Select button.
+5. Add submit event.
+6. Prevent page refresh.
+7. Read email and password.
+
+
+ANSWER:
+
+const form =
+    document.querySelector("#loginForm");
+
+const emailInput =
+    document.querySelector("#email");
+
+const passwordInput =
+    document.querySelector("#password");
+
+const button =
+    document.querySelector("#loginButton");
+
+
+form.addEventListener("submit", (event) => {
+
+    event.preventDefault();
+
+    const email =
+        emailInput.value;
+
+    const password =
+        passwordInput.value;
+
+    console.log(email);
+    console.log(password);
+
+});
+
+
+This is a very good exercise because it combines:
+
+querySelector()
++
+event listener
++
+form
++
+event
++
+preventDefault()
++
+input.value
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                 MERN DEVELOPER CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You should confidently know:
+
+✓ What the DOM is
+
+✓ What querySelector() does
+
+✓ CSS selectors
+
+✓ # for ID
+
+✓ . for class
+
+✓ Tag selectors
+
+✓ Descendant selectors
+
+✓ Multiple class selectors
+
+✓ Attribute selectors
+
+✓ data-* attributes
+
+✓ First matching element
+
+✓ null when nothing is found
+
+✓ querySelector() vs querySelectorAll()
+
+✓ NodeList concept
+
+✓ Scoped querySelector()
+
+✓ Reading .value
+
+✓ Changing .textContent
+
+✓ classList
+
+✓ addEventListener()
+
+✓ DOM loading/script timing
+
+✓ Why React usually avoids manual DOM manipulation
+
+✓ useRef() for direct DOM access in React
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                       FINAL MENTAL MODEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+                HTML ELEMENT
+                      ↓
+                CSS SELECTOR
+                      ↓
+              querySelector()
+                      ↓
+              ┌───────┴───────┐
+              ↓               ↓
+           Element           null
+              ↓
+       READ / MODIFY / EVENT
+              ↓
+        APPLICATION LOGIC
+
+
+Example:
+
+<button id="buyButton">
+    Buy
+</button>
+
+        ↓
+
+const button =
+    document.querySelector("#buyButton");
+
+        ↓
+
+button.addEventListener("click", handleBuy);
+
+
+For MERN:
+
+USER
+ ↓
+React UI
+ ↓
+Event
+ ↓
+Application Logic
+ ↓
+API Request
+ ↓
+Express
+ ↓
+MongoDB
+ ↓
+Response
+ ↓
+React State
+ ↓
+UI Update
+
+
+IMPORTANT:
+
+You should learn querySelector() well enough to understand the DOM,
+but as a MERN developer, don't spend weeks on DOM manipulation.
+
+Your bigger priorities are:
+
+JavaScript
+→ Async JavaScript
+→ Promises
+→ Fetch/API
+→ React
+→ Node.js
+→ Express
+→ MongoDB
+→ Authentication
+→ REST APIs
+→ Git
+→ Deployment
+
+querySelector() is an important FOUNDATION, not the main skill of a
+MERN developer.
 
 */

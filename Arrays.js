@@ -1,129 +1,176 @@
 /*
-╔══════════════════════════════════════════════════════════════╗
-║                  JAVASCRIPT ARRAYS                          ║
-║        COMPLETE GUIDE FOR A MERN STACK DEVELOPER            ║
-╚══════════════════════════════════════════════════════════════╝
+╔══════════════════════════════════════════════════════════════════════╗
+║                         ARRAYS IN JAVASCRIPT                       ║
+║                 MERN DEVELOPER — IMPORTANT PARTS                   ║
+╚══════════════════════════════════════════════════════════════════════╝
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-1. WHAT IS AN ARRAY?
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q1. What is an Array in JavaScript?
+
+Answer:
 
 An array is a data structure used to store multiple values
 inside a single variable.
 
 Example:
 
-const fruits = ["Apple", "Mango", "Banana"];
+const fruits = ["Apple", "Banana", "Mango"];
+
 
 Instead of:
 
 const fruit1 = "Apple";
-const fruit2 = "Mango";
-const fruit3 = "Banana";
-
-we can use:
-
-const fruits = ["Apple", "Mango", "Banana"];
+const fruit2 = "Banana";
+const fruit3 = "Mango";
 
 
-WHY ARE ARRAYS IMPORTANT IN MERN?
+We can use:
 
-Because backend APIs commonly return collections of data.
+const fruits = ["Apple", "Banana", "Mango"];
+
+
+Think:
+
+Array = ordered collection of values
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q2. Why are arrays extremely important in MERN?
+
+Answer:
+
+Because real applications constantly work with lists of data.
+
+Examples:
+
+Users
+Products
+Orders
+Cart items
+Messages
+Comments
+Notifications
+Categories
+Skills
+Permissions
+
 
 Example API response:
 
 [
     {
-        "_id": "101",
-        "name": "Laptop",
-        "price": 50000
+        "name": "Keyboard",
+        "price": 1500
     },
     {
-        "_id": "102",
-        "name": "Phone",
-        "price": 30000
+        "name": "Mouse",
+        "price": 800
     }
 ]
 
-That entire response is an ARRAY of objects.
+
+This is an array containing objects.
 
 
-Real MERN flow:
-
-MongoDB
-   ↓
-Express API
-   ↓
-JSON Array
-   ↓
-React
-   ↓
-UI list
+You will work with this type of data constantly in React and Node.js.
 
 
-Example:
-
-const products = [
-    { name: "Laptop", price: 50000 },
-    { name: "Phone", price: 30000 }
-];
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-2. CREATING ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q3. How do you create an array?
 
-Using array literal:
+Answer:
 
-const numbers = [10, 20, 30];
+Use square brackets:
+
+const fruits = ["Apple", "Banana", "Mango"];
 
 
-Empty array:
+You can also create an empty array:
 
 const users = [];
 
 
-Array can contain different data types:
+Then add data later.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q4. Can an array contain different data types?
+
+Answer:
+
+YES.
+
+Example:
 
 const data = [
     "Navneet",
     20,
     true,
-    null,
-    { city: "Indore" }
+    null
 ];
 
-JavaScript allows this.
 
-BUT:
+An array can contain:
 
-In real applications, keep arrays logically consistent.
-
-Good:
-
-const prices = [100, 200, 300];
-
-Avoid unnecessarily mixing unrelated types.
+String
+Number
+Boolean
+Object
+Array
+etc.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-3. ARRAY INDEX
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+However, in professional applications, arrays usually contain
+related types of data.
 
-Array indexing starts from 0.
 
-const fruits = [
-    "Apple",
-    "Mango",
-    "Banana"
+Example:
+
+const users = [
+    {
+        name: "Navneet",
+        age: 20
+    },
+    {
+        name: "Rahul",
+        age: 21
+    }
 ];
+
+
+This is much more common in MERN.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q5. What is an index?
+
+Answer:
+
+An index is the position of an element in an array.
+
+IMPORTANT:
+
+Array indexes start from 0.
+
+
+Example:
+
+const fruits = ["Apple", "Banana", "Mango"];
+
 
 Index:
 
-Apple  → 0
-Mango  → 1
-Banana → 2
+0 → Apple
+1 → Banana
+2 → Mango
 
 
 Access:
@@ -139,413 +186,725 @@ console.log(fruits[2]);
 
 Output:
 
-Banana
+Mango
 
 
-Important:
-
-Array length = 3
-
-Last index = length - 1
-
-Therefore:
-
-fruits[fruits.length - 1]
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-4. ARRAY LENGTH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q6. Why does JavaScript start array indexes from 0?
 
-const users = ["A", "B", "C"];
+Answer:
+
+This is simply how JavaScript arrays are designed.
+
+So:
+
+first element → index 0
+second element → index 1
+third element → index 2
+
+
+This is extremely important when working with:
+
+loops
+map
+filter
+array algorithms
+React lists
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q7. How do you get the length of an array?
+
+Answer:
+
+Use:
+
+.length
+
+
+Example:
+
+const users = ["Navneet", "Rahul", "Aman"];
 
 console.log(users.length);
+
 
 Output:
 
 3
 
 
-IMPORTANT:
+Important:
 
-length tells you the number of elements,
-not the last index.
+length is the number of elements.
+
+The last index is:
+
+length - 1
+
+
+So:
+
+users[users.length - 1]
+
+
+gives the last element.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q8. How do you get the last element?
+
+Answer:
+
+Traditional approach:
+
+const users = ["Navneet", "Rahul", "Aman"];
+
+console.log(users[users.length - 1]);
+
+
+Output:
+
+Aman
+
+
+Modern JavaScript also provides:
+
+users.at(-1)
 
 
 Example:
 
-length = 3
+console.log(users.at(-1));
 
-indexes:
-
-0
-1
-2
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-5. MODIFYING ARRAY ELEMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-const users = ["A", "B", "C"];
-
-users[1] = "Navneet";
-
-console.log(users);
 
 Output:
 
-["A", "Navneet", "C"]
+Aman
+
+
+Both are useful.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q9. What happens if you access an index that doesn't exist?
+
+Answer:
+
+You get:
+
+undefined
+
+
+Example:
+
+const users = ["Navneet", "Rahul"];
+
+console.log(users[5]);
+
+
+Output:
+
+undefined
+
+
+This is important when handling API data.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q10. Can you change an array element?
+
+Answer:
+
+YES.
+
+Example:
+
+const users = ["Navneet", "Rahul"];
+
+users[0] = "Aman";
+
+console.log(users);
+
+
+Output:
+
+["Aman", "Rahul"]
 
 
 Arrays are mutable.
 
-That means their contents can be changed.
+
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-6. ADDING ELEMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q11. What is push()?
 
+Answer:
 
-push()
+push() adds an element to the END of an array.
 
-Adds element at the END.
+Example:
 
-const users = ["A", "B"];
+const users = ["Navneet", "Rahul"];
 
-users.push("C");
+users.push("Aman");
 
 console.log(users);
 
-Output:
-
-["A", "B", "C"]
-
-
-Real use case:
-
-After creating a new item locally:
-
-cart.push(product);
-
-
-------------------------------------------------------------
-
-unshift()
-
-Adds element at the BEGINNING.
-
-const users = ["B", "C"];
-
-users.unshift("A");
 
 Output:
 
-["A", "B", "C"]
+["Navneet", "Rahul", "Aman"]
 
 
-Usually less preferred for large arrays because existing
-elements may need to be shifted.
+push() changes the original array.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-7. REMOVING ELEMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
 
-pop()
+Q12. What is pop()?
 
-Removes the LAST element.
+Answer:
 
-const users = ["A", "B", "C"];
+pop() removes the LAST element.
+
+Example:
+
+const users = ["Navneet", "Rahul", "Aman"];
 
 users.pop();
 
+console.log(users);
+
+
 Output:
 
-["A", "B"]
+["Navneet", "Rahul"]
 
 
-------------------------------------------------------------
+pop() changes the original array.
 
-shift()
 
-Removes the FIRST element.
+──────────────────────────────────────────────────────────────────────
 
-const users = ["A", "B", "C"];
+
+Q13. What is unshift()?
+
+Answer:
+
+unshift() adds an element to the BEGINNING.
+
+Example:
+
+const users = ["Rahul", "Aman"];
+
+users.unshift("Navneet");
+
+console.log(users);
+
+
+Output:
+
+["Navneet", "Rahul", "Aman"]
+
+
+It changes the original array.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q14. What is shift()?
+
+Answer:
+
+shift() removes the FIRST element.
+
+Example:
+
+const users = ["Navneet", "Rahul", "Aman"];
 
 users.shift();
+
+console.log(users);
+
+
+Output:
+
+["Rahul", "Aman"]
+
+
+It changes the original array.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q15. What are the four basic methods?
+
+Answer:
+
+
+push()
+→ add to end
+
+
+pop()
+→ remove from end
+
+
+unshift()
+→ add to beginning
+
+
+shift()
+→ remove from beginning
+
+
+Remember:
+
+        START             END
+
+         ↓                 ↓
+
+     shift()          pop()
+     unshift()        push()
+
+
+These are the basic array operations.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q16. What is splice()?
+
+Answer:
+
+splice() is used to ADD, REMOVE, or REPLACE elements
+at a specific position.
+
+
+Example:
+
+const users = ["A", "B", "C", "D"];
+
+users.splice(1, 1);
+
+
+Meaning:
+
+Start at index 1
+Remove 1 element
+
+
+Result:
+
+["A", "C", "D"]
+
+
+splice() changes the original array.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q17. How do you add an element using splice()?
+
+Answer:
+
+Example:
+
+const users = ["A", "B", "D"];
+
+users.splice(2, 0, "C");
+
+
+Meaning:
+
+index → 2
+remove → 0
+add → "C"
+
+
+Result:
+
+["A", "B", "C", "D"]
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q18. What is slice()?
+
+Answer:
+
+slice() creates a portion of an array WITHOUT changing
+the original array.
+
+
+Example:
+
+const users = ["A", "B", "C", "D"];
+
+const result = users.slice(1, 3);
+
+console.log(result);
+
 
 Output:
 
 ["B", "C"]
 
 
-------------------------------------------------------------
+Original array:
+
+["A", "B", "C", "D"]
+
+
+is unchanged.
+
+
+IMPORTANT:
+
+slice() → does NOT mutate
+
+splice() → DOES mutate
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q19. What is the easiest way to remember splice vs slice?
+
+Answer:
+
+
+slice:
+
+"Give me a portion."
+
+
+splice:
+
+"Change the original array."
+
+
+Example:
+
+slice()
+
+const result = users.slice(1, 3);
+
 
 splice()
 
-Can:
-
-- Add
-- Remove
-- Replace
-
-Example:
-
-const users = ["A", "B", "C"];
-
 users.splice(1, 1);
-
-Output:
-
-["A", "C"]
-
-
-Explanation:
-
-splice(startIndex, deleteCount)
-
-
-Example:
-
-users.splice(1, 0, "Navneet");
-
-Output:
-
-["A", "Navneet", "B", "C"]
-
-
-VERY IMPORTANT:
-
-splice() MUTATES the original array.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-8. slice() VS splice()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-This is a very common interview question.
-
-slice():
-
-→ does NOT mutate original array
-→ returns a portion of array
-
-const numbers = [10, 20, 30, 40];
-
-const result = numbers.slice(1, 3);
-
-console.log(result);
-
-Output:
-
-[20, 30]
-
-Original:
-
-[10, 20, 30, 40]
-
-
-------------------------------------------------------------
-
-splice():
-
-→ MUTATES original array
-→ adds/removes/replaces elements
-
-Example:
-
-const numbers = [10, 20, 30, 40];
-
-numbers.splice(1, 2);
-
-numbers becomes:
-
-[10, 40]
 
 
 Remember:
 
-slice  → copy/portion
-splice → modify original
+SLICE → copy a section
+
+SPLICE → modify original
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-9. SEARCHING IN ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
 
-indexOf()
+Q20. How do you check whether an array contains a value?
 
-const fruits = ["Apple", "Mango", "Banana"];
+Answer:
 
-console.log(fruits.indexOf("Mango"));
-
-Output:
-
-1
-
-
-If not found:
-
--1
-
-
-------------------------------------------------------------
+Use:
 
 includes()
 
-const fruits = ["Apple", "Mango"];
 
-console.log(fruits.includes("Mango"));
+Example:
+
+const skills = ["JavaScript", "React", "Node"];
+
+console.log(skills.includes("React"));
+
 
 Output:
 
 true
 
 
-Real use case:
+Example:
 
-if (permissions.includes("delete_user")) {
+console.log(skills.includes("Python"));
 
-    // allow deletion
-
-}
-
-
-------------------------------------------------------------
-
-find()
-
-Returns the FIRST matching element.
-
-const users = [
-    { id: 1, name: "A" },
-    { id: 2, name: "B" }
-];
-
-const user = users.find(user => user.id === 2);
 
 Output:
 
-{ id: 2, name: "B" }
+false
 
 
-------------------------------------------------------------
+Very useful for:
 
-findIndex()
+permissions
+roles
+selected items
+feature checks
 
-Returns index of first matching element.
 
-const index = users.findIndex(
-    user => user.id === 2
-);
+──────────────────────────────────────────────────────────────────────
+
+
+Q21. What is indexOf()?
+
+Answer:
+
+indexOf() returns the index of a value.
+
+Example:
+
+const skills = ["JavaScript", "React", "Node"];
+
+console.log(skills.indexOf("React"));
+
 
 Output:
 
 1
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-10. map()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+If the value doesn't exist:
 
-map() transforms every element and returns a NEW array.
+-1
+
 
 Example:
 
-const prices = [100, 200, 300];
+skills.indexOf("Python");
 
-const discountedPrices = prices.map(
-    price => price * 0.9
-);
 
 Output:
 
-[90, 180, 270]
+-1
 
 
-Think:
-
-INPUT ARRAY
-     ↓
-TRANSFORMATION
-     ↓
-NEW ARRAY
+──────────────────────────────────────────────────────────────────────
 
 
-REAL MERN EXAMPLE:
+Q22. What is find()?
 
-const products = [
-    { name: "Laptop", price: 50000 },
-    { name: "Phone", price: 30000 }
+Answer:
+
+find() returns the FIRST element that matches a condition.
+
+
+Example:
+
+const users = [
+    { id: 1, name: "Navneet" },
+    { id: 2, name: "Rahul" },
+    { id: 3, name: "Aman" }
 ];
 
-const names = products.map(
-    product => product.name
-);
+
+const user = users.find((user) => user.id === 2);
+
+
+Result:
+
+{ id: 2, name: "Rahul" }
+
+
+This is extremely useful in MERN applications.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q23. What is findIndex()?
+
+Answer:
+
+findIndex() returns the index of the first matching element.
+
+
+Example:
+
+const users = [
+    { id: 1, name: "Navneet" },
+    { id: 2, name: "Rahul" }
+];
+
+
+const index = users.findIndex((user) => user.id === 2);
+
 
 Output:
 
-["Laptop", "Phone"]
+1
 
 
-REACT:
+If no element matches:
 
-products.map(product => (
-    <ProductCard
-        key={product._id}
-        product={product}
-    />
+-1
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q24. What is map()?
+
+Answer:
+
+map() creates a NEW array by transforming every element.
+
+
+Example:
+
+const numbers = [1, 2, 3];
+
+const doubled = numbers.map((number) => number * 2);
+
+console.log(doubled);
+
+
+Output:
+
+[2, 4, 6]
+
+
+Original:
+
+[1, 2, 3]
+
+
+is unchanged.
+
+
+This is one of the MOST IMPORTANT array methods
+for React development.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q25. What is a real React use case for map()?
+
+Answer:
+
+Suppose your API returns:
+
+const products = [
+    {
+        id: 1,
+        name: "Keyboard",
+        price: 1500
+    },
+    {
+        id: 2,
+        name: "Mouse",
+        price: 800
+    }
+];
+
+
+React can render:
+
+products.map((product) => (
+    <div key={product.id}>
+        {product.name}
+        {product.price}
+    </div>
 ));
 
 
-This is something you will use constantly in React.
+This is one of the most common array patterns in React.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-11. filter()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-filter() creates a NEW array containing elements that satisfy
-a condition.
+
+Q26. What is filter()?
+
+Answer:
+
+filter() creates a NEW array containing elements
+that satisfy a condition.
+
 
 Example:
 
 const numbers = [10, 15, 20, 25];
 
-const result = numbers.filter(
-    num => num > 15
-);
+const result = numbers.filter((number) => number > 15);
+
 
 Output:
 
 [20, 25]
 
 
-REAL MERN:
+filter() does not change the original array.
 
-const products = products.filter(
-    product => product.stock > 0
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q27. What is a real MERN use case for filter()?
+
+Answer:
+
+Suppose you have products:
+
+const products = [
+    { name: "Keyboard", price: 1500 },
+    { name: "Mouse", price: 800 },
+    { name: "Monitor", price: 5000 }
+];
+
+
+You want products under ₹2000:
+
+const cheapProducts = products.filter(
+    (product) => product.price < 2000
 );
 
-Now only products that are in stock remain.
+
+Result:
+
+Keyboard
+Mouse
 
 
-Authentication example:
+This is commonly used for:
 
-const admins = users.filter(
-    user => user.role === "admin"
-);
+search
+filtering
+category selection
+price ranges
+active users
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-12. reduce()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-reduce() converts an array into a single accumulated result.
+
+Q28. What is reduce()?
+
+Answer:
+
+reduce() combines array elements into ONE final value.
+
 
 Example:
 
@@ -556,157 +915,240 @@ const total = prices.reduce(
     0
 );
 
+
 Output:
 
 600
 
 
-REAL E-COMMERCE USE CASE:
+Think:
 
-const cart = [
-    { price: 1000, quantity: 2 },
-    { price: 500, quantity: 3 }
-];
+map → transform every item
 
-const total = cart.reduce(
-    (total, item) =>
-        total + item.price * item.quantity,
-    0
-);
+filter → select some items
 
-Output:
-
-3500
+reduce → combine items into one result
 
 
-This is extremely useful for:
-
-- Cart totals
-- Revenue calculations
-- Order totals
-- Statistics
-- Aggregation
-- Counting
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-13. forEach()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q29. What is a real MERN use case for reduce()?
 
-forEach() executes a function for each element.
+Answer:
+
+Shopping cart.
+
 
 Example:
 
-const users = ["A", "B", "C"];
+const cart = [
+    { name: "Keyboard", price: 1500, quantity: 2 },
+    { name: "Mouse", price: 800, quantity: 1 }
+];
 
-users.forEach(user => {
+
+Calculate total:
+
+const total = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+);
+
+
+Calculation:
+
+1500 × 2 = 3000
+
+800 × 1 = 800
+
+Total:
+
+3800
+
+
+This is a realistic e-commerce use case.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q30. What is forEach()?
+
+Answer:
+
+forEach() executes a function for every element.
+
+
+Example:
+
+const users = ["Navneet", "Rahul", "Aman"];
+
+users.forEach((user) => {
     console.log(user);
 });
 
 
+Output:
+
+Navneet
+Rahul
+Aman
+
+
 Important:
 
-forEach() does NOT return a new transformed array.
+forEach() does NOT create a new array.
 
 
-Use:
-
-map()
-→ when you need a new array
+Use it when you simply want to perform an action for each item.
 
 
-Use:
-
-forEach()
-→ when you just want to perform an action
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-14. some()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Q31. What is the difference between map() and forEach()?
 
-some() checks whether AT LEAST ONE element satisfies
-the condition.
-
-const users = [
-    { role: "user" },
-    { role: "admin" }
-];
-
-const hasAdmin = users.some(
-    user => user.role === "admin"
-);
-
-Output:
-
-true
+Answer:
 
 
-Real use:
+map():
 
-const hasOutOfStock = products.some(
-    product => product.stock === 0
+Transforms data and returns a NEW array.
+
+
+const result = numbers.map(
+    (number) => number * 2
 );
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-15. every()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+forEach():
 
-every() checks whether ALL elements satisfy a condition.
-
-const products = [
-    { stock: 10 },
-    { stock: 20 },
-    { stock: 5 }
-];
-
-const result = products.every(
-    product => product.stock > 0
-);
-
-Output:
-
-true
+Performs an action but does not create a new array.
 
 
-Real use:
+numbers.forEach((number) => {
+    console.log(number);
+});
 
-Check whether all items in an order are valid.
+
+Simple rule:
+
+Need a new array → map()
+
+Just perform an action → forEach()
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-16. sort()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-sort() sorts an array.
 
-IMPORTANT:
+Q32. What is some()?
 
-sort() MUTATES the original array.
+Answer:
 
-For numbers, this can surprise beginners.
+some() checks whether AT LEAST ONE element satisfies a condition.
+
 
 Example:
 
-const numbers = [10, 2, 30];
-
-numbers.sort();
-
-Unexpected:
-
-[10, 2, 30]
-
-because default sorting is based on string-like comparison.
+const users = [
+    { name: "Navneet", isAdmin: false },
+    { name: "Rahul", isAdmin: true }
+];
 
 
-Correct numeric sorting:
+const hasAdmin = users.some(
+    (user) => user.isAdmin
+);
 
-numbers.sort((a, b) => a - b);
 
 Output:
 
-[2, 10, 30]
+true
+
+
+Real use:
+
+"Does this order contain an expensive product?"
+
+"Does this user have admin permission?"
+
+"Is anyone online?"
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q33. What is every()?
+
+Answer:
+
+every() checks whether ALL elements satisfy a condition.
+
+
+Example:
+
+const ages = [20, 25, 30];
+
+const result = ages.every(
+    (age) => age >= 18
+);
+
+
+Output:
+
+true
+
+
+Real use:
+
+"Are all required fields valid?"
+
+"Are all products in stock?"
+
+"Have all users completed verification?"
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q34. What is sort()?
+
+Answer:
+
+sort() sorts an array.
+
+
+IMPORTANT:
+
+By default, JavaScript sorts values as strings.
+
+
+Example:
+
+const numbers = [10, 2, 5];
+
+numbers.sort();
+
+console.log(numbers);
+
+
+You may get:
+
+[10, 2, 5]
+
+
+because JavaScript compares them like strings.
+
+
+For numbers:
+
+numbers.sort((a, b) => a - b);
+
+
+Ascending:
+
+[2, 5, 10]
 
 
 Descending:
@@ -714,124 +1156,208 @@ Descending:
 numbers.sort((a, b) => b - a);
 
 
-REAL MERN USE CASE:
+IMPORTANT:
 
-Sort products by price:
-
-products.sort(
-    (a, b) => a.price - b.price
-);
+sort() mutates the original array.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-17. reverse()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-reverse() reverses an array.
+
+Q35. Why is sort() important in MERN?
+
+Answer:
+
+You may need to sort:
+
+products by price
+users by name
+orders by date
+messages by time
+ratings
+search results
+
+
+Example:
+
+products.sort((a, b) => a.price - b.price);
+
+
+This sorts products from cheapest to most expensive.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q36. What is reverse()?
+
+Answer:
+
+reverse() reverses the array.
+
+
+Example:
 
 const numbers = [1, 2, 3];
 
 numbers.reverse();
 
+console.log(numbers);
+
+
 Output:
 
 [3, 2, 1]
 
+
 IMPORTANT:
 
-reverse() MUTATES the original array.
+reverse() mutates the original array.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-18. JOIN()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-join() converts array into a string.
 
-const skills = [
-    "React",
-    "Node",
-    "MongoDB"
-];
+Q37. What are modern non-mutating alternatives to sort() and reverse()?
 
-console.log(skills.join(", "));
+Answer:
+
+Modern JavaScript provides:
+
+toSorted()
+
+toReversed()
+
+
+Example:
+
+const numbers = [3, 1, 2];
+
+const sorted = numbers.toSorted(
+    (a, b) => a - b
+);
+
+
+Original:
+
+[3, 1, 2]
+
+
+New array:
+
+[1, 2, 3]
+
+
+Similarly:
+
+const reversed = numbers.toReversed();
+
+
+These are useful when you want to preserve the original array,
+which is especially helpful in React state management.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q38. What is join()?
+
+Answer:
+
+join() converts array elements into a string.
+
+
+Example:
+
+const skills = ["JavaScript", "React", "Node"];
+
+const result = skills.join(", ");
+
 
 Output:
 
-React, Node, MongoDB
+"JavaScript, React, Node"
 
 
-REAL USE:
-
-Displaying tags:
-
-React | Node.js | MongoDB
+Useful when displaying or sending comma-separated data.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-19. SPLIT() VS JOIN()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-split():
 
-String → Array
+Q39. What is split()?
 
-const text = "React,Node,MongoDB";
+Answer:
 
-const result = text.split(",");
+split() belongs to strings, not arrays.
+
+
+It converts a string into an array.
+
+
+Example:
+
+const skills = "JavaScript,React,Node";
+
+const result = skills.split(",");
+
 
 Output:
 
-["React", "Node", "MongoDB"]
+["JavaScript", "React", "Node"]
 
 
-join():
-
-Array → String
-
-const skills = ["React", "Node", "MongoDB"];
-
-const result = skills.join(",");
-
-Output:
-
-"React,Node,MongoDB"
+Very common when processing user input.
 
 
 Remember:
 
-split → string to array
-join  → array to string
+split() → String → Array
+
+join() → Array → String
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-20. CONCAT()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Combines arrays.
-
-const a = [1, 2];
-const b = [3, 4];
-
-const result = a.concat(b);
-
-Output:
-
-[1, 2, 3, 4]
+──────────────────────────────────────────────────────────────────────
 
 
-Modern alternative:
+Q40. What is concat()?
 
-const result = [...a, ...b];
+Answer:
+
+concat() combines arrays.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-21. SPREAD OPERATOR WITH ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Example:
 
-Spread operator:
+const frontend = ["React", "CSS"];
+
+const backend = ["Node", "Express"];
+
+const skills = frontend.concat(backend);
+
+
+Result:
+
+["React", "CSS", "Node", "Express"]
+
+
+It creates a new array.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q41. What is the spread operator with arrays?
+
+Answer:
+
+The spread operator:
 
 ...
+
+
+can copy or combine arrays.
+
 
 Example:
 
@@ -840,181 +1366,275 @@ const numbers = [1, 2, 3];
 const copy = [...numbers];
 
 
-Add elements:
+Now:
 
-const newNumbers = [
-    ...numbers,
-    4
-];
+copy
 
-Output:
+contains:
 
-[1, 2, 3, 4]
+[1, 2, 3]
 
 
-Combine:
-
-const a = [1, 2];
-const b = [3, 4];
-
-const result = [...a, ...b];
-
-Output:
-
-[1, 2, 3, 4]
+This is extremely important in React.
 
 
-VERY IMPORTANT IN REACT.
-
-Instead of mutating:
-
-users.push(newUser);
+──────────────────────────────────────────────────────────────────────
 
 
-Prefer:
+Q42. Why is spread important in React?
 
-setUsers(prevUsers => [
-    ...prevUsers,
-    newUser
+Answer:
+
+React state should generally be updated without mutating
+the existing array directly.
+
+
+Bad:
+
+const users = ["A", "B"];
+
+users.push("C");
+
+
+Better:
+
+setUsers([
+    ...users,
+    "C"
 ]);
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-22. ARRAY DESTRUCTURING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+The spread operator creates a new array.
+
+
+This is a very important React concept.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q43. How do you remove an item from a React array?
+
+Answer:
+
+Suppose:
+
+const users = [
+    { id: 1, name: "A" },
+    { id: 2, name: "B" },
+    { id: 3, name: "C" }
+];
+
+
+Remove id 2:
+
+setUsers(
+    users.filter((user) => user.id !== 2)
+);
+
+
+This creates a new array without that user.
+
+
+This pattern is extremely common in React.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q44. How do you update an object inside a React array?
+
+Answer:
 
 Example:
 
 const users = [
-    "Navneet",
-    "Rahul",
-    "Aman"
+    { id: 1, name: "A", active: false },
+    { id: 2, name: "B", active: false }
 ];
 
-const [first, second, third] = users;
 
-console.log(first);
+Update user 2:
+
+setUsers(
+    users.map((user) =>
+        user.id === 2
+            ? { ...user, active: true }
+            : user
+    )
+);
+
+
+This is an extremely important React pattern.
+
+
+Think:
+
+map → find the item → create updated object
+
+filter → remove the item
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q45. What is an Array of Objects?
+
+Answer:
+
+It is an array where each element is an object.
+
+
+Example:
+
+const users = [
+    {
+        id: 1,
+        name: "Navneet",
+        age: 20
+    },
+    {
+        id: 2,
+        name: "Rahul",
+        age: 21
+    }
+];
+
+
+This is probably the MOST important array structure
+for MERN development.
+
+
+Why?
+
+Because API responses commonly look exactly like this.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q46. How do you access data inside an array of objects?
+
+Answer:
+
+Example:
+
+const users = [
+    {
+        name: "Navneet",
+        age: 20
+    }
+];
+
+
+Access array element:
+
+users[0]
+
+
+Access object property:
+
+users[0].name
+
 
 Output:
 
 Navneet
 
 
-Very common in React:
+So:
 
-const [count, setCount] = useState(0);
+users
+→ Array
 
+users[0]
+→ Object
 
-This is array destructuring.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-23. REST VS SPREAD IN ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Spread:
-
-Expands values.
-
-const numbers = [1, 2, 3];
-
-const copy = [...numbers];
+users[0].name
+→ String
 
 
-Rest:
-
-Collects values.
-
-const [first, ...remaining] =
-    [1, 2, 3, 4];
-
-first:
-
-1
-
-remaining:
-
-[2, 3, 4]
+──────────────────────────────────────────────────────────────────────
 
 
-Remember:
+Q47. How do you search an array of objects?
 
-... on RHS → Spread
-... in parameter/destructuring → Rest
+Answer:
 
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-24. ARRAY REFERENCE BEHAVIOUR
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Very important.
-
-const a = [1, 2, 3];
-
-const b = a;
-
-b.push(4);
-
-console.log(a);
-
-Output:
-
-[1, 2, 3, 4]
+Use find().
 
 
-WHY?
+Example:
 
-Because a and b point to the SAME array.
-
-Concept:
-
-a ─────┐
-       │
-       ▼
-   [1,2,3]
-       ▲
-       │
-b ─────┘
+const users = [
+    { id: 1, name: "Navneet" },
+    { id: 2, name: "Rahul" }
+];
 
 
-They don't contain independent copies.
+const user = users.find(
+    (user) => user.id === 2
+);
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-25. COPYING AN ARRAY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Result:
 
-Use spread:
-
-const a = [1, 2, 3];
-
-const b = [...a];
-
-b.push(4);
-
-console.log(a);
-
-Output:
-
-[1, 2, 3]
-
-console.log(b);
-
-Output:
-
-[1, 2, 3, 4]
+{
+    id: 2,
+    name: "Rahul"
+}
 
 
-Now they are different arrays.
+This is a very common pattern.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-26. SHALLOW COPY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+──────────────────────────────────────────────────────────────────────
 
-IMPORTANT:
 
-Spread only creates a SHALLOW copy.
+Q48. How do you filter an array of objects?
+
+Answer:
+
+Use filter().
+
+
+Example:
+
+const users = [
+    { name: "Navneet", age: 20 },
+    { name: "Rahul", age: 17 },
+    { name: "Aman", age: 22 }
+];
+
+
+const adults = users.filter(
+    (user) => user.age >= 18
+);
+
+
+Result:
+
+Navneet
+Aman
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q49. What is shallow copying of an array?
+
+Answer:
+
+When you do:
+
+const copy = [...users];
+
+
+you create a new array.
+
+
+But nested objects are still referenced.
+
 
 Example:
 
@@ -1024,209 +1644,142 @@ const users = [
     }
 ];
 
+
 const copy = [...users];
 
 copy[0].name = "Rahul";
 
-console.log(users[0].name);
 
-Output:
-
-Rahul
-
-
-WHY?
-
-The outer array is copied.
-
-But the object inside is still the same reference.
-
-
-Concept:
-
-users array
-    ↓
- [ object ] ← same object ← copy array
-
-
-For nested data, you need to understand
-shallow vs deep copying properly.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-27. IMMUTABILITY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-In React, you should generally avoid directly mutating
-state arrays.
-
-BAD:
-
-users.push(newUser);
-
-setUsers(users);
-
-
-BETTER:
-
-setUsers(prevUsers => [
-    ...prevUsers,
-    newUser
-]);
-
-
-Remove:
-
-setUsers(prevUsers =>
-    prevUsers.filter(
-        user => user.id !== userId
-    )
-);
-
-
-Update:
-
-setUsers(prevUsers =>
-    prevUsers.map(user =>
-        user.id === userId
-            ? { ...user, name: "Rahul" }
-            : user
-    )
-);
-
-
-These patterns are EXTREMELY important for React.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-28. ARRAY OF OBJECTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-This is probably the MOST IMPORTANT array structure
-for MERN development.
-
-Example:
-
-const users = [
-
-    {
-        id: 1,
-        name: "Navneet",
-        role: "admin"
-    },
-
-    {
-        id: 2,
-        name: "Rahul",
-        role: "user"
-    }
-
-];
-
-
-Access:
+Now:
 
 users[0].name
 
-Output:
 
-Navneet
+is also:
 
-
-Filter:
-
-const admins = users.filter(
-    user => user.role === "admin"
-);
+"Rahul"
 
 
-Map:
+Why?
 
-const names = users.map(
-    user => user.name
-);
-
-
-Find:
-
-const user = users.find(
-    user => user.id === 2
-);
+The outer array was copied,
+but the object inside was still shared.
 
 
-This structure appears everywhere:
+This is called a:
 
-API responses
-MongoDB documents
-React state
-Tables
-Dashboards
-Orders
-Products
-Users
+Shallow copy.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-29. NESTED ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This concept is important when working with React state.
 
-Arrays can contain arrays.
 
-const matrix = [
-    [1, 2],
-    [3, 4]
-];
+──────────────────────────────────────────────────────────────────────
 
-Access:
 
-matrix[0][1]
+Q50. What is a common array reference mistake?
+
+Answer:
+
+Example:
+
+const arr1 = [1, 2, 3];
+
+const arr2 = arr1;
+
+arr2.push(4);
+
+
+Now:
+
+console.log(arr1);
+
 
 Output:
 
-2
+[1, 2, 3, 4]
 
 
-Real use cases:
+Why?
 
-- Matrix problems
-- Grid data
-- Charts
-- Coordinates
-- Nested product variants
+arr1 and arr2 point to the SAME array.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-30. FLAT()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Think:
+
+arr1 ───────┐
+            ↓
+        [1, 2, 3, 4]
+            ↑
+arr2 ───────┘
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q51. How can you create a new array instead?
+
+Answer:
+
+Use spread:
+
+const arr1 = [1, 2, 3];
+
+const arr2 = [...arr1];
+
+arr2.push(4);
+
+
+Now:
+
+arr1:
+
+[1, 2, 3]
+
+
+arr2:
+
+[1, 2, 3, 4]
+
+
+Different arrays.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q52. What is flat()?
+
+Answer:
 
 flat() converts nested arrays into a flatter array.
+
+
+Example:
 
 const numbers = [
     [1, 2],
     [3, 4]
 ];
 
+
 const result = numbers.flat();
 
-Output:
-
-[1, 2, 3, 4]
-
-
-For deeper nesting:
-
-const data = [1, [2, [3, 4]]];
-
-data.flat(Infinity);
 
 Output:
 
 [1, 2, 3, 4]
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-31. flatMap()
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Useful when API data or processing creates nested arrays.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q53. What is flatMap()?
+
+Answer:
 
 flatMap() combines:
 
@@ -1234,208 +1787,61 @@ map()
 +
 flat()
 
+
 Example:
 
-const numbers = [1, 2, 3];
+const users = [
+    {
+        name: "A",
+        skills: ["React", "Node"]
+    },
+    {
+        name: "B",
+        skills: ["MongoDB"]
+    }
+];
 
-const result = numbers.flatMap(
-    num => [num, num * 2]
+
+const skills = users.flatMap(
+    (user) => user.skills
 );
 
-Output:
 
-[
-    1, 2,
-    2, 4,
-    3, 6
-]
+Result:
+
+["React", "Node", "MongoDB"]
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-32. OPTIONAL CHAINING WITH ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Suppose API data may not exist.
-
-const firstUser = users?.[0];
+Useful, but you don't need to master it before
+map/filter/reduce.
 
 
-If users is null/undefined,
-it won't immediately throw an error.
+──────────────────────────────────────────────────────────────────────
 
 
-Common API/React usage:
+Q54. What happens if you use delete on an array element?
 
-const name = response?.data?.users?.[0]?.name;
+Answer:
 
-
-This is very useful when dealing with
-potentially incomplete API responses.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-33. ARRAY-LIKE VS ARRAY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Not everything that looks like an array is actually an array.
-
-Example:
-
-NodeList
-arguments
-HTMLCollection
-
-Check:
-
-Array.isArray(value);
+Avoid it.
 
 
 Example:
 
-Array.isArray([1, 2, 3]);
+const numbers = [10, 20, 30];
 
-Output:
-
-true
+delete numbers[1];
 
 
-Array.isArray("hello");
+You may get:
 
-Output:
-
-false
+[10, empty, 30]
 
 
-Important:
+It creates a hole rather than properly removing the element.
 
-Use Array.isArray()
-instead of:
-
-typeof value === "array"
-
-because:
-
-typeof [] === "object"
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-34. CONVERTING ARRAY-LIKE VALUES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Array.from()
-
-Example:
-
-const text = "HELLO";
-
-const result = Array.from(text);
-
-Output:
-
-["H", "E", "L", "L", "O"]
-
-
-Can also convert iterable/array-like structures.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-35. EMPTY ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-const users = [];
-
-console.log(users.length);
-
-Output:
-
-0
-
-
-Check:
-
-if (users.length === 0) {
-
-    console.log("No users");
-
-}
-
-
-Important:
-
-[] is truthy.
-
-Therefore:
-
-if ([]) {
-    console.log("Runs");
-}
-
-It WILL run.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-36. ARRAY TRUTHINESS TRAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-IMPORTANT INTERVIEW QUESTION.
-
-console.log(Boolean([]));
-
-Output:
-
-true
-
-
-console.log(Boolean([1, 2]));
-
-Output:
-
-true
-
-
-Even empty array is truthy.
-
-So don't do:
-
-if (users) {
-
-    // users exist
-
-}
-
-if you specifically want to check whether
-there are elements.
 
 Use:
-
-if (users.length > 0) {
-
-}
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-37. DELETING ARRAY ELEMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Avoid:
-
-delete users[1];
-
-
-Because it creates a hole.
-
-Example:
-
-const users = ["A", "B", "C"];
-
-delete users[1];
-
-Result behaves like:
-
-["A", empty, "C"]
-
-
-For removing an element, prefer:
 
 splice()
 
@@ -1444,985 +1850,540 @@ or, in React:
 filter()
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-38. MUTATING VS NON-MUTATING METHODS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-MUTATING:
-
-push()
-pop()
-shift()
-unshift()
-splice()
-sort()
-reverse()
+instead.
 
 
-These modify the original array.
+──────────────────────────────────────────────────────────────────────
 
 
-NON-MUTATING / RETURN NEW RESULT:
+Q55. What is array chaining?
 
-map()
-filter()
-slice()
-concat()
-flat()
-flatMap()
+Answer:
 
+You can use multiple array methods together.
 
-Modern JavaScript also has non-mutating counterparts such as:
-
-toSorted()
-toReversed()
-toSpliced()
-
-These are useful when you want the transformed
-array without mutating the original.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-39. CHAINING ARRAY METHODS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Very important in real applications.
 
 Example:
 
-const products = [
-    { name: "Laptop", price: 50000, stock: 10 },
-    { name: "Phone", price: 30000, stock: 0 },
-    { name: "Tablet", price: 20000, stock: 5 }
+const users = [
+    { name: "A", age: 20 },
+    { name: "B", age: 17 },
+    { name: "C", age: 25 }
 ];
 
-const result = products
-    .filter(product => product.stock > 0)
-    .filter(product => product.price > 25000)
-    .map(product => product.name);
 
-Output:
+const names = users
+    .filter((user) => user.age >= 18)
+    .map((user) => user.name);
 
-["Laptop"]
+
+Result:
+
+["A", "C"]
 
 
 Flow:
 
-products
-   ↓
-filter stock
-   ↓
-filter price
-   ↓
-map name
-   ↓
-["Laptop"]
+users
+
+↓ filter
+
+adults
+
+↓ map
+
+names
 
 
-This pattern is VERY common in React dashboards.
+This is extremely common in React.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-40. ARRAY + API RESPONSE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Imagine backend returns:
-
-{
-    "success": true,
-    "users": [
-        {
-            "id": 1,
-            "name": "A"
-        },
-        {
-            "id": 2,
-            "name": "B"
-        }
-    ]
-}
+──────────────────────────────────────────────────────────────────────
 
 
-React:
+Q56. What is an important async array mistake?
 
-const users = response.data.users;
+Answer:
 
+Do NOT assume forEach waits for async operations.
 
-Render:
-
-users.map(user => (
-    <UserCard
-        key={user.id}
-        user={user}
-    />
-));
-
-
-This is one of the most important
-MERN array use cases.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-41. ARRAY + CART
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Example:
 
-const cart = [
-    {
-        productId: 1,
-        name: "Laptop",
-        price: 50000,
-        quantity: 2
-    },
-    {
-        productId: 2,
-        name: "Mouse",
-        price: 1000,
-        quantity: 3
-    }
-];
-
-
-Total:
-
-const total = cart.reduce(
-    (sum, item) =>
-        sum + item.price * item.quantity,
-    0
-);
-
-Output:
-
-103000
-
-
-This is exactly the kind of logic
-you will encounter in e-commerce applications.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-42. ARRAY + SEARCH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-const products = [
-    { name: "Laptop" },
-    { name: "Phone" },
-    { name: "Tablet" }
-];
-
-const searchTerm = "lap";
-
-const result = products.filter(product =>
-    product.name
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-);
-
-
-Output:
-
-[
-    { name: "Laptop" }
-]
-
-
-This pattern is used for:
-
-Search bars
-Product filtering
-User tables
-Admin dashboards
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-43. ARRAY + PAGINATION
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Suppose we have:
-
-const users = [...];
-
-Page size:
-
-10
-
-Page:
-
-2
-
-We can calculate:
-
-const start = (page - 1) * pageSize;
-
-const end = start + pageSize;
-
-const pageUsers = users.slice(start, end);
-
-
-For page 2:
-
-start = 10
-
-end = 20
-
-Therefore:
-
-users.slice(10, 20)
-
-
-Important:
-
-Real production applications usually perform pagination
-on the DATABASE/API side rather than loading thousands
-of records into the browser first.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-44. ARRAY + ASYNC OPERATIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Very important MERN concept.
-
-Suppose:
-
-const userIds = [1, 2, 3];
-
-
-You want to fetch all users.
-
-Use:
-
-const users = await Promise.all(
-    userIds.map(id => fetchUser(id))
-);
-
-
-Flow:
-
-userIds
-   ↓
-map()
-   ↓
-Promise for each user
-   ↓
-Promise.all()
-   ↓
-wait for all
-   ↓
-users array
-
-
-DO NOT blindly use:
-
-userIds.forEach(async id => {
-    await fetchUser(id);
+users.forEach(async (user) => {
+    await fetchUser(user);
 });
 
 
-because forEach doesn't wait for async callbacks.
+The outer code does NOT wait for all of these operations.
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-45. ARRAY PERFORMANCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+For sequential execution:
 
-Common operations:
+for (const user of users) {
+    await fetchUser(user);
+}
+
+
+For parallel execution:
+
+await Promise.all(
+    users.map((user) => fetchUser(user))
+);
+
+
+This is important in Node.js backend development.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q57. What is Promise.all with map()?
+
+Answer:
+
+It is a common way to run multiple async operations concurrently.
+
+
+Example:
+
+const results = await Promise.all(
+    users.map((user) => fetchUserData(user.id))
+);
+
+
+Flow:
+
+users
+
+↓ map
+
+Promises
+
+↓ Promise.all
+
+Wait for all
+
+↓
+
+
+results
+
+
+This is useful for:
+
+multiple API calls
+batch operations
+parallel database-related work
+
+
+Use it carefully when the operations are independent.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q58. What is the time complexity of common array operations?
+
+Answer:
+
 
 Access by index:
 
-arr[i]
+arr[index]
 
-Usually:
-
-O(1)
+→ O(1)
 
 
-Search:
+push():
+
+→ O(1) average
+
+
+pop():
+
+→ O(1)
+
+
+shift():
+
+→ O(n)
+
+
+unshift():
+
+→ O(n)
+
+
+Searching:
 
 includes()
 indexOf()
 find()
 
-Usually:
-
-O(n)
+→ O(n)
 
 
 map():
 
-O(n)
+→ O(n)
 
 
 filter():
 
-O(n)
+→ O(n)
 
 
 reduce():
 
-O(n)
+→ O(n)
 
 
 Sorting:
 
-Usually:
+sort()
 
-O(n log n)
-
-
-Important for interviews.
-
-If you repeatedly search a huge collection by ID,
-an object/Map may sometimes be more appropriate than
-scanning an array.
+→ generally O(n log n)
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-46. ARRAY VS OBJECT VS MAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+You don't need to memorize every implementation detail,
+but understanding these helps with performance and DSA.
 
-ARRAY:
 
-Use when you have an ordered collection.
+──────────────────────────────────────────────────────────────────────
 
-Example:
+
+Q59. Why is array knowledge important for DSA too?
+
+Answer:
+
+Arrays are one of the foundations of DSA.
+
+
+Many important patterns operate on arrays:
+
+Two Pointers
+Sliding Window
+Prefix Sum
+Binary Search
+Hashing
+Kadane's Algorithm
+Sorting
+3Sum
+Two Sum
+
+
+So JavaScript array knowledge helps with MERN,
+while algorithmic array knowledge helps with coding interviews.
+
+
+They are related, but they are NOT the same thing.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q60. What are the array methods I should MASTER for MERN?
+
+Answer:
+
+MASTER these:
+
+
+push()
+pop()
+
+map()
+filter()
+reduce()
+forEach()
+
+find()
+findIndex()
+
+some()
+every()
+
+includes()
+indexOf()
+
+slice()
+splice()
+
+sort()
+
+join()
+split()
+
+concat()
+
+Array.isArray()
+
+spread operator ...
+
+
+These will cover a huge amount of your day-to-day work.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q61. Which array concepts are especially important for React?
+
+Answer:
+
+Focus heavily on:
+
+
+1. map()
+
+→ rendering lists
+
+
+2. filter()
+
+→ removing/filtering items
+
+
+3. spread (...)
+
+→ immutable updates
+
+
+4. find()
+
+→ finding an item
+
+
+5. some()
+
+→ checking existence
+
+
+6. reduce()
+
+→ totals/calculations
+
+
+7. Array of objects
+
+→ API data
+
+
+8. Avoiding direct mutation
+
+→ important for React state
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q62. Real industry example — E-commerce application
+
+Answer:
+
+
+Backend returns:
 
 const products = [
-    product1,
-    product2,
-    product3
-];
-
-
-OBJECT:
-
-Useful for key-value data.
-
-const user = {
-    name: "Navneet",
-    age: 20
-};
-
-
-MAP:
-
-Useful for key-value collections where Map's features
-and semantics are appropriate.
-
-const usersById = new Map();
-
-usersById.set("101", user);
-
-
-Simple mental model:
-
-Many ordered items
-        ↓
-      Array
-
-One entity / properties
-        ↓
-      Object
-
-Key → value lookup collection
-        ↓
-       Map
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-47. COMMON INTERVIEW TRAPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-TRAP 1:
-
-console.log(typeof []);
-
-ANSWER:
-
-"object"
-
-
-------------------------------------------------------------
-
-TRAP 2:
-
-console.log(Array.isArray([]));
-
-ANSWER:
-
-true
-
-
-------------------------------------------------------------
-
-TRAP 3:
-
-console.log([] === []);
-
-ANSWER:
-
-false
-
-Because they are two different array objects.
-
-
-------------------------------------------------------------
-
-TRAP 4:
-
-const a = [];
-const b = a;
-
-console.log(a === b);
-
-ANSWER:
-
-true
-
-Both point to the same array.
-
-
-------------------------------------------------------------
-
-TRAP 5:
-
-const a = [1, 2];
-const b = [1, 2];
-
-console.log(a === b);
-
-ANSWER:
-
-false
-
-Different references.
-
-
-------------------------------------------------------------
-
-TRAP 6:
-
-console.log([1, 2, 3].map(x => x * 2));
-
-ANSWER:
-
-[2, 4, 6]
-
-
-------------------------------------------------------------
-
-TRAP 7:
-
-const result = [1, 2, 3].forEach(
-    x => x * 2
-);
-
-console.log(result);
-
-ANSWER:
-
-undefined
-
-
-------------------------------------------------------------
-
-TRAP 8:
-
-const numbers = [10, 2, 5];
-
-numbers.sort();
-
-console.log(numbers);
-
-ANSWER:
-
-[10, 2, 5]
-
-Because default sort compares string representations.
-
-Correct:
-
-numbers.sort((a, b) => a - b);
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-48. MOST IMPORTANT ARRAY METHODS TO MASTER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-You don't need to memorize every method immediately.
-
-MASTER THESE FIRST:
-
-1. push()
-2. pop()
-3. shift()
-4. unshift()
-5. splice()
-6. slice()
-
-7. map()
-8. filter()
-9. reduce()
-10. forEach()
-
-11. find()
-12. findIndex()
-13. some()
-14. every()
-
-15. includes()
-16. indexOf()
-
-17. sort()
-18. reverse()
-
-19. join()
-20. concat()
-
-21. flat()
-22. flatMap()
-
-And concepts:
-
-23. spread
-24. destructuring
-25. shallow copy
-26. reference
-27. immutability
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-49. MERN DEVELOPER ARRAY CHEAT SHEET
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Need to transform every item?
-        ↓
-      map()
-
-
-Need matching items?
-        ↓
-     filter()
-
-
-Need ONE matching item?
-        ↓
-      find()
-
-
-Need index of matching item?
-        ↓
-   findIndex()
-
-
-Need ONE final result?
-        ↓
-     reduce()
-
-
-Need to perform an action?
-        ↓
-    forEach()
-
-
-Need at least one match?
-        ↓
-      some()
-
-
-Need every item to match?
-        ↓
-     every()
-
-
-Need to check existence?
-        ↓
-    includes()
-
-
-Need portion without mutation?
-        ↓
-      slice()
-
-
-Need to modify array?
-        ↓
-      splice()
-
-
-Need to add at end?
-        ↓
-      push()
-
-
-Need to remove from end?
-        ↓
-       pop()
-
-
-Need immutable copy?
-        ↓
-      [...array]
-
-
-Need array → string?
-        ↓
-      join()
-
-
-Need string → array?
-        ↓
-      split()
-
-
-Need flatten nested array?
-        ↓
-       flat()
-
-
-Need async operations in parallel?
-        ↓
-Promise.all(array.map(...))
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-50. THE MOST IMPORTANT MERN MENTAL MODEL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Imagine your backend gives React:
-
-[
     {
-        _id: "1",
-        name: "Laptop",
-        price: 50000,
-        stock: 10
+        id: 1,
+        name: "Keyboard",
+        price: 1500,
+        inStock: true
     },
     {
-        _id: "2",
-        name: "Phone",
-        price: 30000,
-        stock: 0
+        id: 2,
+        name: "Mouse",
+        price: 800,
+        inStock: false
     }
-]
-
-
-You should immediately think:
-
-DISPLAY:
-    map()
-
-SEARCH:
-    filter()
-
-FIND ONE:
-    find()
-
-CHECK:
-    some() / every()
-
-CALCULATE:
-    reduce()
-
-COPY:
-    [...array]
-
-UPDATE:
-    map()
-
-DELETE:
-    filter()
-
-SORT:
-    toSorted() / sort()
-
-RENDER:
-    map()
-
-ASYNC PROCESSING:
-    Promise.all(
-        array.map(...)
-    )
-
-
-That mental model will make React + Node.js development
-MUCH easier.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-51. WHAT YOU SHOULD BE ABLE TO DO WITHOUT HELP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Before moving ahead from arrays, you should be comfortable
-solving these problems:
-
-✔ Find maximum/minimum
-✔ Find duplicates
-✔ Remove duplicates
-✔ Reverse an array
-✔ Count frequencies
-✔ Search objects
-✔ Filter objects
-✔ Sort objects
-✔ Calculate totals
-✔ Group data
-✔ Transform API data
-✔ Add item immutably
-✔ Delete item immutably
-✔ Update item immutably
-✔ Flatten nested arrays
-✔ Merge arrays
-✔ Destructure arrays
-✔ Copy arrays
-✔ Understand references
-✔ Chain map/filter/reduce
-✔ Use Promise.all() with map()
-✔ Render arrays in React
-✔ Understand MongoDB/API arrays
-
-*/
-
-
-/*
-╔══════════════════════════════════════════════════════════════╗
-║                    JAVASCRIPT ARRAYS                        ║
-║          COMPLETE QUESTIONS + ANSWERS                       ║
-║       BEGINNER → ADVANCED → MERN → INTERVIEW                ║
-╚══════════════════════════════════════════════════════════════╝
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 1 — ARRAY FUNDAMENTALS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q1. What is an array?
-
-ANSWER:
-
-An array is a data structure used to store multiple values
-inside a single variable.
-
-Example:
-
-const fruits = ["Apple", "Mango", "Banana"];
-
-Instead of:
-
-const fruit1 = "Apple";
-const fruit2 = "Mango";
-const fruit3 = "Banana";
-
-we can store them together:
-
-const fruits = ["Apple", "Mango", "Banana"];
-
-
-------------------------------------------------------------
-
-Q2. How do you create an array?
-
-ANSWER:
-
-Using array literal:
-
-const numbers = [10, 20, 30];
-
-
-Empty array:
-
-const users = [];
-
-
-Using Array constructor:
-
-const numbers = new Array(10, 20, 30);
-
-But in normal JavaScript code, prefer:
-
-const numbers = [10, 20, 30];
-
-
-------------------------------------------------------------
-
-Q3. Can an array contain different data types?
-
-ANSWER:
-
-YES.
-
-const data = [
-    "Navneet",
-    20,
-    true,
-    null,
-    { city: "Indore" },
-    [1, 2, 3]
 ];
 
-JavaScript allows it.
 
-However, in real applications, arrays are usually
-logically consistent.
+Search:
 
-Example:
-
-const prices = [100, 200, 300];
-
-is better than:
-
-const prices = [100, "200", true, null];
+products.filter(
+    (product) => product.name.includes("Key")
+);
 
 
-------------------------------------------------------------
+Available products:
 
-Q4. What is the index of the first element?
-
-ANSWER:
-
-0
-
-Example:
-
-const fruits = ["Apple", "Mango", "Banana"];
-
-Apple  → index 0
-Mango  → index 1
-Banana → index 2
+products.filter(
+    (product) => product.inStock
+);
 
 
-------------------------------------------------------------
+Find one product:
 
-Q5. What will be the output?
+products.find(
+    (product) => product.id === 1
+);
 
-const fruits = ["Apple", "Mango", "Banana"];
+
+Calculate total:
+
+cart.reduce(
+    (total, item) =>
+        total + item.price * item.quantity,
+    0
+);
+
+
+Render products:
+
+products.map(
+    (product) => ...
+);
+
+
+One application can use:
+
+filter
+find
+reduce
+map
+includes
+
+all together.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q63. Real industry example — Admin dashboard
+
+Answer:
+
+Suppose the API returns:
+
+const users = [
+    { name: "A", role: "admin", active: true },
+    { name: "B", role: "user", active: true },
+    { name: "C", role: "user", active: false }
+];
+
+
+Get admins:
+
+users.filter(
+    (user) => user.role === "admin"
+);
+
+
+Get active users:
+
+users.filter(
+    (user) => user.active
+);
+
+
+Check whether an admin exists:
+
+users.some(
+    (user) => user.role === "admin"
+);
+
+
+Display names:
+
+users.map(
+    (user) => user.name
+);
+
+
+This is exactly how arrays are used in real applications.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+                    PRACTICE QUESTIONS
+                 Try solving before reading
+──────────────────────────────────────────────────────────────────────
+
+
+Q64. What is the output?
+
+const fruits = ["Apple", "Banana", "Mango"];
 
 console.log(fruits[0]);
-console.log(fruits[2]);
 
-ANSWER:
+
+Answer:
 
 Apple
-Banana
 
 
-------------------------------------------------------------
-
-Q6. What happens if you access an index that doesn't exist?
-
-const fruits = ["Apple", "Mango"];
-
-console.log(fruits[5]);
-
-ANSWER:
-
-undefined
+──────────────────────────────────────────────────────────────────────
 
 
-------------------------------------------------------------
+Q65. What is the output?
 
-Q7. What is array.length?
+const fruits = ["Apple", "Banana", "Mango"];
 
-ANSWER:
+console.log(fruits.length);
 
-It gives the number of elements in the array.
 
-const numbers = [10, 20, 30];
-
-console.log(numbers.length);
-
-Output:
+Answer:
 
 3
 
-Important:
 
-Last index = length - 1
-
-So:
-
-numbers[numbers.length - 1]
-
-returns the last element.
+──────────────────────────────────────────────────────────────────────
 
 
-------------------------------------------------------------
+Q66. What is the output?
 
-Q8. How do you get the last element of an array?
+const fruits = ["Apple", "Banana", "Mango"];
 
-ANSWER:
-
-const numbers = [10, 20, 30];
-
-console.log(numbers[numbers.length - 1]);
-
-Output:
-
-30
-
-Modern alternative:
-
-console.log(numbers.at(-1));
-
-Output:
-
-30
+console.log(fruits[fruits.length - 1]);
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 2 — ADDING AND REMOVING ELEMENTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Answer:
+
+Mango
 
 
-Q9. What does push() do?
-
-ANSWER:
-
-Adds one or more elements to the END of an array.
-
-const numbers = [1, 2];
-
-numbers.push(3);
-
-console.log(numbers);
-
-Output:
-
-[1, 2, 3]
-
-push() mutates the original array.
+──────────────────────────────────────────────────────────────────────
 
 
-------------------------------------------------------------
-
-Q10. What does pop() do?
-
-ANSWER:
-
-Removes the LAST element.
+Q67. What is the output?
 
 const numbers = [1, 2, 3];
 
-const result = numbers.pop();
+numbers.push(4);
 
-console.log(result);
 console.log(numbers);
 
-Output:
 
-3
+Answer:
+
+[1, 2, 3, 4]
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q68. What is the output?
+
+const numbers = [1, 2, 3];
+
+numbers.pop();
+
+console.log(numbers);
+
+
+Answer:
+
 [1, 2]
 
 
-------------------------------------------------------------
+──────────────────────────────────────────────────────────────────────
 
-Q11. What does shift() do?
 
-ANSWER:
-
-Removes the FIRST element.
+Q69. What is the output?
 
 const numbers = [1, 2, 3];
 
@@ -2430,1849 +2391,701 @@ numbers.shift();
 
 console.log(numbers);
 
-Output:
+
+Answer:
 
 [2, 3]
 
 
-------------------------------------------------------------
+──────────────────────────────────────────────────────────────────────
 
-Q12. What does unshift() do?
 
-ANSWER:
-
-Adds elements to the BEGINNING.
-
-const numbers = [2, 3];
-
-numbers.unshift(1);
-
-console.log(numbers);
-
-Output:
-
-[1, 2, 3]
-
-
-------------------------------------------------------------
-
-Q13. Which methods add/remove elements?
-
-ANSWER:
-
-push()
-→ add at end
-
-pop()
-→ remove from end
-
-unshift()
-→ add at beginning
-
-shift()
-→ remove from beginning
-
-
-------------------------------------------------------------
-
-Q14. Which is generally faster:
-
-push() or unshift()?
-
-ANSWER:
-
-push() is generally O(1).
-
-unshift() is generally O(n), because existing elements
-usually have to be shifted.
-
-Therefore:
-
-Adding at end → push()
-
-Adding at beginning → unshift()
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 3 — SPLICE AND SLICE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q15. What does splice() do?
-
-ANSWER:
-
-splice() can:
-
-- Add elements
-- Remove elements
-- Replace elements
-
-Example:
-
-const numbers = [10, 20, 30, 40];
-
-numbers.splice(1, 2);
-
-console.log(numbers);
-
-Output:
-
-[10, 40]
-
-
-Syntax:
-
-array.splice(startIndex, deleteCount)
-
-
-------------------------------------------------------------
-
-Q16. What will be the output?
-
-const numbers = [10, 20, 30, 40];
-
-numbers.splice(1, 1);
-
-console.log(numbers);
-
-ANSWER:
-
-[10, 30, 40]
-
-
-20 was removed.
-
-
-------------------------------------------------------------
-
-Q17. How do you insert an element using splice()?
-
-ANSWER:
-
-const numbers = [10, 20, 40];
-
-numbers.splice(2, 0, 30);
-
-console.log(numbers);
-
-Output:
-
-[10, 20, 30, 40]
-
-0 means:
-
-"Delete nothing."
-
-
-------------------------------------------------------------
-
-Q18. How do you replace an element using splice()?
-
-ANSWER:
-
-const numbers = [10, 20, 30];
-
-numbers.splice(1, 1, 200);
-
-console.log(numbers);
-
-Output:
-
-[10, 200, 30]
-
-
-------------------------------------------------------------
-
-Q19. Does splice() mutate the original array?
-
-ANSWER:
-
-YES.
+Q70. What is the output?
 
 const numbers = [1, 2, 3];
 
-numbers.splice(1, 1);
+numbers.unshift(0);
 
-The original array is changed.
+console.log(numbers);
 
 
-------------------------------------------------------------
+Answer:
 
-Q20. What does slice() do?
+[0, 1, 2, 3]
 
-ANSWER:
 
-slice() returns a portion of an array WITHOUT changing
-the original array.
+──────────────────────────────────────────────────────────────────────
 
-const numbers = [10, 20, 30, 40];
+
+Q71. What is the output?
+
+const numbers = [1, 2, 3, 4];
 
 const result = numbers.slice(1, 3);
 
 console.log(result);
 
-Output:
 
-[20, 30]
+Answer:
 
-Original:
+[2, 3]
 
-[10, 20, 30, 40]
 
+──────────────────────────────────────────────────────────────────────
 
-------------------------------------------------------------
 
-Q21. Difference between slice() and splice()?
+Q72. What is the output?
 
-ANSWER:
+const numbers = [1, 2, 3, 4];
 
-slice():
+numbers.splice(1, 2);
 
-→ Doesn't mutate
-→ Returns a portion
+console.log(numbers);
 
 
-splice():
+Answer:
 
-→ Mutates
-→ Adds/removes/replaces
+[1, 4]
 
 
-Remember:
+Because:
 
-slice  = take a portion
+start = 1
+remove = 2
 
-splice = modify the array
 
+It removes:
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 4 — SEARCHING ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2 and 3
 
 
-Q22. What does indexOf() do?
+──────────────────────────────────────────────────────────────────────
 
-ANSWER:
 
-Returns the index of the first matching element.
-
-const fruits = ["Apple", "Mango", "Banana"];
-
-console.log(fruits.indexOf("Mango"));
-
-Output:
-
-1
-
-If not found:
-
--1
-
-
-------------------------------------------------------------
-
-Q23. What does includes() do?
-
-ANSWER:
-
-Checks whether an array contains a value.
-
-const skills = [
-    "JavaScript",
-    "React",
-    "Node"
-];
-
-console.log(skills.includes("React"));
-
-Output:
-
-true
-
-
-------------------------------------------------------------
-
-Q24. Difference between indexOf() and includes()?
-
-ANSWER:
-
-indexOf():
-
-Returns index.
-
-includes():
-
-Returns true/false.
-
-
-Example:
-
-skills.indexOf("React");
-
-→ 1
-
-
-skills.includes("React");
-
-→ true
-
-
-------------------------------------------------------------
-
-Q25. What does find() do?
-
-ANSWER:
-
-Returns the FIRST element satisfying a condition.
-
-const users = [
-    { id: 1, name: "A" },
-    { id: 2, name: "B" },
-    { id: 3, name: "C" }
-];
-
-const user = users.find(
-    user => user.id === 2
-);
-
-console.log(user);
-
-Output:
-
-{ id: 2, name: "B" }
-
-
-------------------------------------------------------------
-
-Q26. What does findIndex() do?
-
-ANSWER:
-
-Returns the index of the FIRST matching element.
-
-const users = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 }
-];
-
-const index = users.findIndex(
-    user => user.id === 2
-);
-
-console.log(index);
-
-Output:
-
-1
-
-
-------------------------------------------------------------
-
-Q27. Difference between find() and filter()?
-
-ANSWER:
-
-find():
-
-Returns ONE matching element.
-
-filter():
-
-Returns ALL matching elements.
-
-Example:
-
-users.find(user => user.role === "admin");
-
-
-returns:
-
-one admin
-
-
-users.filter(user => user.role === "admin");
-
-
-returns:
-
-all admins
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 5 — MAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q28. What does map() do?
-
-ANSWER:
-
-map() executes a callback for every element and creates
-a NEW array containing the returned values.
-
-Example:
+Q73. What is the output?
 
 const numbers = [1, 2, 3];
 
 const result = numbers.map(
-    num => num * 2
+    (num) => num * 2
 );
 
 console.log(result);
 
-Output:
+
+Answer:
 
 [2, 4, 6]
 
 
-------------------------------------------------------------
+──────────────────────────────────────────────────────────────────────
 
-Q29. Does map() modify the original array?
 
-ANSWER:
+Q74. What is the output?
 
-No.
+const numbers = [10, 15, 20, 25];
+
+const result = numbers.filter(
+    (num) => num > 15
+);
+
+console.log(result);
+
+
+Answer:
+
+[20, 25]
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q75. What is the output?
+
+const numbers = [10, 20, 30];
+
+const result = numbers.reduce(
+    (sum, num) => sum + num,
+    0
+);
+
+console.log(result);
+
+
+Answer:
+
+60
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q76. What is the output?
+
+const users = [
+    { id: 1, name: "A" },
+    { id: 2, name: "B" }
+];
+
+const user = users.find(
+    (user) => user.id === 2
+);
+
+console.log(user.name);
+
+
+Answer:
+
+B
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q77. What is the output?
+
+const users = [
+    { name: "A", age: 20 },
+    { name: "B", age: 16 },
+    { name: "C", age: 25 }
+];
+
+const adults = users.filter(
+    (user) => user.age >= 18
+);
+
+console.log(adults.length);
+
+
+Answer:
+
+2
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q78. What is the output?
+
+const users = [
+    { name: "A", isAdmin: false },
+    { name: "B", isAdmin: true }
+];
+
+console.log(
+    users.some((user) => user.isAdmin)
+);
+
+
+Answer:
+
+true
+
+
+Because at least one user is an admin.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q79. What is the output?
+
+const numbers = [2, 4, 6];
+
+console.log(
+    numbers.every((num) => num % 2 === 0)
+);
+
+
+Answer:
+
+true
+
+
+Every number is even.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q80. What is the output?
 
 const numbers = [1, 2, 3];
 
-const result = numbers.map(
-    num => num * 2
-);
+const copy = [...numbers];
+
+copy.push(4);
+
+console.log(numbers);
+console.log(copy);
+
+
+Answer:
 
 numbers:
 
 [1, 2, 3]
 
-result:
 
-[2, 4, 6]
+copy:
+
+[1, 2, 3, 4]
 
 
-------------------------------------------------------------
+They are different arrays.
 
-Q30. What happens if you don't return from map()?
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q81. What is the output?
 
 const numbers = [1, 2, 3];
 
-const result = numbers.map(num => {
-    num * 2;
-});
+const copy = numbers;
 
-console.log(result);
+copy.push(4);
 
-ANSWER:
+console.log(numbers);
 
-[undefined, undefined, undefined]
 
-Correct:
+Answer:
 
-const result = numbers.map(num => {
-    return num * 2;
-});
+[1, 2, 3, 4]
 
 
-------------------------------------------------------------
+Because both variables reference the same array.
 
-Q31. What parameters does a map() callback receive?
 
-ANSWER:
+──────────────────────────────────────────────────────────────────────
 
-Usually:
 
-1. Current element
-2. Index
-3. Entire array
-
-Example:
-
-numbers.map((value, index, array) => {
-
-    console.log(value);
-    console.log(index);
-    console.log(array);
-
-});
-
-
-------------------------------------------------------------
-
-Q32. Convert an array of users into an array of names.
-
-const users = [
-    { name: "Navneet", age: 20 },
-    { name: "Rahul", age: 21 }
-];
-
-ANSWER:
-
-const names = users.map(
-    user => user.name
-);
-
-Output:
-
-["Navneet", "Rahul"]
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 6 — FILTER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q33. What does filter() do?
-
-ANSWER:
-
-filter() creates a NEW array containing elements for which
-the callback returns true.
-
-Example:
-
-const numbers = [10, 15, 20, 25];
-
-const result = numbers.filter(
-    num => num > 15
-);
-
-Output:
-
-[20, 25]
-
-
-------------------------------------------------------------
-
-Q34. What does the filter callback return?
-
-ANSWER:
-
-true  → keep element
-
-false → remove element
-
-
-------------------------------------------------------------
-
-Q35. Get all even numbers.
-
-ANSWER:
-
-const numbers = [1, 2, 3, 4, 5, 6];
-
-const evenNumbers = numbers.filter(
-    num => num % 2 === 0
-);
-
-Output:
-
-[2, 4, 6]
-
-
-------------------------------------------------------------
-
-Q36. Get all active users.
-
-const users = [
-    { name: "A", active: true },
-    { name: "B", active: false },
-    { name: "C", active: true }
-];
-
-ANSWER:
-
-const activeUsers = users.filter(
-    user => user.active
-);
-
-
-Output:
-
-A
-C
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 7 — REDUCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q37. What does reduce() do?
-
-ANSWER:
-
-reduce() processes an array and builds a single result.
-
-Example:
-
-const numbers = [10, 20, 30];
-
-const total = numbers.reduce(
-    (sum, num) => sum + num,
-    0
-);
-
-Output:
-
-60
-
-
-------------------------------------------------------------
-
-Q38. What is an accumulator?
-
-ANSWER:
-
-The accumulator stores the result accumulated so far.
-
-Example:
-
-numbers.reduce((sum, num) => {
-
-    return sum + num;
-
-}, 0);
-
-
-sum → accumulator
-
-num → current element
-
-0 → initial value
-
-
-------------------------------------------------------------
-
-Q39. Calculate the total price of products.
+Q82. What is the output?
 
 const products = [
-    { price: 100 },
-    { price: 200 },
-    { price: 300 }
+    { name: "Keyboard", price: 1500 },
+    { name: "Mouse", price: 800 },
+    { name: "Monitor", price: 5000 }
 ];
-
-ANSWER:
 
 const total = products.reduce(
     (sum, product) => sum + product.price,
     0
 );
 
-Output:
+console.log(total);
 
-600
 
+Answer:
 
-------------------------------------------------------------
+7300
 
-Q40. Calculate cart total using quantity.
 
-const cart = [
-    { price: 1000, quantity: 2 },
-    { price: 500, quantity: 3 }
-];
+Calculation:
 
-ANSWER:
+1500 + 800 + 5000 = 7300
 
-const total = cart.reduce(
-    (sum, item) =>
-        sum + item.price * item.quantity,
-    0
-);
 
-Output:
+──────────────────────────────────────────────────────────────────────
 
-3500
 
-
-------------------------------------------------------------
-
-Q41. Count how many times each value appears.
-
-const numbers = [1, 2, 2, 3, 3, 3];
-
-ANSWER:
-
-const frequency = numbers.reduce(
-    (acc, num) => {
-
-        acc[num] = (acc[num] || 0) + 1;
-
-        return acc;
-
-    },
-    {}
-);
-
-Output:
-
-{
-    1: 1,
-    2: 2,
-    3: 3
-}
-
-
-This is an important interview pattern.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 8 — FOREACH
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q42. What does forEach() do?
-
-ANSWER:
-
-It executes a callback for every element.
-
-Example:
-
-const users = ["A", "B", "C"];
-
-users.forEach(user => {
-    console.log(user);
-});
-
-Output:
-
-A
-B
-C
-
-
-------------------------------------------------------------
-
-Q43. Difference between map() and forEach()?
-
-ANSWER:
-
-map():
-
-Used when you want a NEW transformed array.
-
-const result = numbers.map(
-    num => num * 2
-);
-
-
-forEach():
-
-Used when you simply want to perform an action.
-
-numbers.forEach(num => {
-    console.log(num);
-});
-
-
-Simple rule:
-
-Need new array → map()
-
-Just perform action → forEach()
-
-
-------------------------------------------------------------
-
-Q44. What is the output?
-
-const result = [1, 2, 3].forEach(
-    num => num * 2
-);
-
-console.log(result);
-
-ANSWER:
-
-undefined
-
-forEach() does not return the transformed array.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 9 — SOME AND EVERY
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q45. What does some() do?
-
-ANSWER:
-
-Checks whether AT LEAST ONE element satisfies a condition.
-
-const numbers = [1, 3, 5, 8];
-
-const result = numbers.some(
-    num => num % 2 === 0
-);
-
-console.log(result);
-
-Output:
-
-true
-
-
-------------------------------------------------------------
-
-Q46. What does every() do?
-
-ANSWER:
-
-Checks whether ALL elements satisfy a condition.
-
-const numbers = [2, 4, 6];
-
-const result = numbers.every(
-    num => num % 2 === 0
-);
-
-Output:
-
-true
-
-
-------------------------------------------------------------
-
-Q47. Difference between some() and every()?
-
-ANSWER:
-
-some():
-
-At least ONE must satisfy.
-
-every():
-
-ALL must satisfy.
-
-
-Real example:
-
-some():
-
-"Does the cart contain an out-of-stock item?"
-
-
-every():
-
-"Are all cart items valid?"
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 10 — SORTING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q48. What does sort() do?
-
-ANSWER:
-
-Sorts an array.
-
-Example:
-
-const names = ["Charlie", "Alice", "Bob"];
-
-names.sort();
-
-Output:
-
-["Alice", "Bob", "Charlie"]
-
-
-IMPORTANT:
-
-sort() mutates the original array.
-
-
-------------------------------------------------------------
-
-Q49. Why does this give an unexpected result?
-
-const numbers = [10, 2, 30];
-
-numbers.sort();
-
-ANSWER:
-
-Default sort compares elements as strings.
-
-Therefore numeric arrays should use:
-
-numbers.sort((a, b) => a - b);
-
-
-Output:
-
-[2, 10, 30]
-
-
-------------------------------------------------------------
-
-Q50. Sort numbers in descending order.
-
-ANSWER:
-
-numbers.sort((a, b) => b - a);
-
-
-------------------------------------------------------------
-
-Q51. Sort products by price.
+Q83. Write code to get only product names.
 
 const products = [
-    { name: "Laptop", price: 50000 },
-    { name: "Phone", price: 20000 },
-    { name: "Tablet", price: 30000 }
+    { name: "Keyboard", price: 1500 },
+    { name: "Mouse", price: 800 }
 ];
 
-ANSWER:
+
+Answer:
+
+const names = products.map(
+    (product) => product.name
+);
+
+
+Result:
+
+["Keyboard", "Mouse"]
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q84. Write code to get products cheaper than 1000.
+
+Answer:
+
+const result = products.filter(
+    (product) => product.price < 1000
+);
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q85. Write code to find product with id 2.
+
+Answer:
+
+const product = products.find(
+    (product) => product.id === 2
+);
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q86. Write code to remove user with id 2.
+
+Answer:
+
+setUsers(
+    users.filter(
+        (user) => user.id !== 2
+    )
+);
+
+
+This is an important React pattern.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q87. Write code to add a new user to a React array.
+
+Answer:
+
+setUsers([
+    ...users,
+    newUser
+]);
+
+
+The original array is not directly mutated.
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q88. Which method should you use?
+
+"Create a new array by changing every item."
+
+Answer:
+
+map()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q89. Which method should you use?
+
+"Keep only products whose price is below ₹2000."
+
+Answer:
+
+filter()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q90. Which method should you use?
+
+"Calculate the total cart price."
+
+Answer:
+
+reduce()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q91. Which method should you use?
+
+"Find one user by ID."
+
+Answer:
+
+find()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q92. Which method should you use?
+
+"Check whether at least one user is an admin."
+
+Answer:
+
+some()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q93. Which method should you use?
+
+"Check whether all products are in stock."
+
+Answer:
+
+every()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q94. Which method should you use?
+
+"Run some code for every item but don't need a new array."
+
+Answer:
+
+forEach()
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+Q95. Which method should you use?
+
+"Sort products by price."
+
+Answer:
+
+sort()
+
+
+Example:
 
 products.sort(
     (a, b) => a.price - b.price
 );
 
 
-Result:
+──────────────────────────────────────────────────────────────────────
 
-Phone
-Tablet
-Laptop
 
+                    FINAL MERN CHEAT SHEET
+──────────────────────────────────────────────────────────────────────
 
-------------------------------------------------------------
 
-Q52. How can you sort without mutating the original array?
+ARRAY BASICS
 
-ANSWER:
+const users = [];
 
-Modern:
+users[0]
 
-const sorted = products.toSorted(
-    (a, b) => a.price - b.price
-);
+users.length
 
+users.at(-1)
 
-Or:
 
-const sorted = [...products].sort(
-    (a, b) => a.price - b.price
-);
+ADD / REMOVE
 
+push()       → add at end
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 11 — REVERSE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+pop()        → remove from end
 
+unshift()    → add at beginning
 
-Q53. What does reverse() do?
+shift()      → remove from beginning
 
-ANSWER:
 
-Reverses the array.
+MODIFY
 
-const numbers = [1, 2, 3];
+splice()     → modify original array
 
-numbers.reverse();
+slice()      → get portion without modifying original
 
-Output:
 
-[3, 2, 1]
+SEARCH
 
+includes()   → does value exist?
 
-Important:
+indexOf()    → where is value?
 
-reverse() mutates the original array.
+find()       → find first matching element
 
+findIndex()  → find index of first match
 
-------------------------------------------------------------
 
-Q54. Reverse without modifying the original array.
+TRANSFORM
 
-ANSWER:
+map()        → create new transformed array
 
-const numbers = [1, 2, 3];
+filter()     → create new filtered array
 
-const reversed = [...numbers].reverse();
+reduce()     → combine into one result
 
 
-Modern:
+CHECK
 
-const reversed = numbers.toReversed();
+some()       → at least one?
 
+every()      → all?
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 12 — JOIN, SPLIT, CONCAT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+LOOP
 
-Q55. What does join() do?
+forEach()    → perform action for each item
 
-ANSWER:
 
-Converts an array into a string.
+SORT
 
-const skills = [
-    "React",
-    "Node",
-    "MongoDB"
-];
+sort()       → sort original array
 
-console.log(skills.join(", "));
+toSorted()   → sorted copy
 
-Output:
 
-React, Node, MongoDB
+REVERSE
 
+reverse()    → reverse original array
 
-------------------------------------------------------------
+toReversed() → reversed copy
 
-Q56. What does split() do?
 
-ANSWER:
+COMBINE
 
-Converts a string into an array.
+concat()
 
-const text = "React,Node,MongoDB";
+spread ...
 
-const result = text.split(",");
 
-Output:
+CONVERT
 
-["React", "Node", "MongoDB"]
+split()      → String → Array
 
+join()       → Array → String
 
-Remember:
 
-split:
+NESTED ARRAYS
 
-String → Array
+flat()
 
+flatMap()
 
-join:
 
-Array → String
+TYPE CHECK
 
+Array.isArray(value)
 
-------------------------------------------------------------
 
-Q57. What does concat() do?
+──────────────────────────────────────────────────────────────────────
 
-ANSWER:
 
-Combines arrays.
+                 THE MOST IMPORTANT DIFFERENCE
+──────────────────────────────────────────────────────────────────────
 
-const a = [1, 2];
 
-const b = [3, 4];
+map()
 
-const result = a.concat(b);
-
-Output:
-
-[1, 2, 3, 4]
-
-
-Modern alternative:
-
-const result = [...a, ...b];
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 13 — SPREAD AND DESTRUCTURING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q58. How do you copy an array using spread?
-
-ANSWER:
-
-const original = [1, 2, 3];
-
-const copy = [...original];
-
-
-------------------------------------------------------------
-
-Q59. Why is this dangerous?
-
-const a = [1, 2, 3];
-
-const b = a;
-
-b.push(4);
-
-console.log(a);
-
-ANSWER:
-
-Output:
-
-[1, 2, 3, 4]
-
-Because:
-
-a and b reference the SAME array.
-
-
-------------------------------------------------------------
-
-Q60. What is the difference?
-
-const a = [1, 2, 3];
-
-const b = a;
-
-VS:
-
-const b = [...a];
-
-
-ANSWER:
-
-b = a
-
-→ same reference
-
-
-b = [...a]
-
-→ new outer array
-
-
-------------------------------------------------------------
-
-Q61. How do you merge arrays using spread?
-
-ANSWER:
-
-const frontend = ["React", "CSS"];
-
-const backend = ["Node", "Express"];
-
-const skills = [
-    ...frontend,
-    ...backend
-];
-
-Output:
-
-[
-    "React",
-    "CSS",
-    "Node",
-    "Express"
-]
-
-
-------------------------------------------------------------
-
-Q62. What is array destructuring?
-
-ANSWER:
-
-Extracting values from an array into variables.
-
-const users = [
-    "Navneet",
-    "Rahul",
-    "Aman"
-];
-
-const [first, second, third] = users;
-
-console.log(first);
-
-Output:
-
-Navneet
-
-
-------------------------------------------------------------
-
-Q63. Skip an array element using destructuring.
-
-ANSWER:
-
-const numbers = [10, 20, 30];
-
-const [first, , third] = numbers;
-
-console.log(first);
-console.log(third);
-
-Output:
-
-10
-30
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 14 — ARRAY OF OBJECTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q64. Why is an array of objects extremely important in MERN?
-
-ANSWER:
-
-Because APIs and databases commonly deal with collections
-of documents/entities.
+"I want to TRANSFORM every item."
 
 Example:
 
-const users = [
+[1, 2, 3]
 
-    {
-        id: 1,
-        name: "Navneet",
-        role: "admin"
-    },
+↓
 
-    {
-        id: 2,
-        name: "Rahul",
-        role: "user"
-    }
-
-];
+[2, 4, 6]
 
 
-This structure appears in:
+filter()
 
-MongoDB results
-REST APIs
-React state
-Tables
-Dashboards
-E-commerce
-Admin panels
+"I want to KEEP some items."
+
+Example:
+
+[10, 15, 20]
+
+↓
+
+[15, 20]
 
 
-------------------------------------------------------------
+find()
 
-Q65. Get the names of all users.
+"I want ONE matching item."
 
-ANSWER:
+Example:
 
-const names = users.map(
-    user => user.name
+users
+
+↓
+
+one user
+
+
+some()
+
+"Does AT LEAST ONE match?"
+
+
+every()
+
+"Do ALL match?"
+
+
+reduce()
+
+"I want ONE final result."
+
+
+forEach()
+
+"I just want to DO something for each item."
+
+
+──────────────────────────────────────────────────────────────────────
+
+
+                 MOST IMPORTANT REACT PATTERNS
+──────────────────────────────────────────────────────────────────────
+
+
+Render:
+
+users.map(
+    (user) => <UserCard key={user.id} user={user} />
 );
 
 
-------------------------------------------------------------
+Remove:
 
-Q66. Get only admins.
-
-ANSWER:
-
-const admins = users.filter(
-    user => user.role === "admin"
+setUsers(
+    users.filter(
+        (user) => user.id !== id
+    )
 );
 
 
-------------------------------------------------------------
+Add:
 
-Q67. Find user with id 2.
-
-ANSWER:
-
-const user = users.find(
-    user => user.id === 2
-);
-
-
-------------------------------------------------------------
-
-Q68. Update one user's name without mutating the array.
-
-ANSWER:
-
-const updatedUsers = users.map(user => {
-
-    if (user.id === 2) {
-
-        return {
-            ...user,
-            name: "Amit"
-        };
-
-    }
-
-    return user;
-});
-
-
-This pattern is VERY important in React.
-
-
-------------------------------------------------------------
-
-Q69. Delete one user without mutating the array.
-
-ANSWER:
-
-const updatedUsers = users.filter(
-    user => user.id !== 2
-);
-
-
-This is also extremely common in React.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 15 — IMMUTABILITY IN REACT
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q70. Why should we avoid directly mutating React state arrays?
-
-ANSWER:
-
-Because React state updates are expected to be handled
-through state setters, and immutable updates make changes
-predictable and help React detect state changes correctly.
-
-BAD:
-
-users.push(newUser);
-
-setUsers(users);
-
-
-BETTER:
-
-setUsers(prevUsers => [
-    ...prevUsers,
+setUsers([
+    ...users,
     newUser
 ]);
 
 
-------------------------------------------------------------
+Update:
 
-Q71. How do you add an item immutably?
-
-ANSWER:
-
-setItems(prevItems => [
-    ...prevItems,
-    newItem
-]);
-
-
-------------------------------------------------------------
-
-Q72. How do you remove an item immutably?
-
-ANSWER:
-
-setItems(prevItems =>
-    prevItems.filter(
-        item => item.id !== id
+setUsers(
+    users.map((user) =>
+        user.id === id
+            ? { ...user, name: "Rahul" }
+            : user
     )
 );
 
 
-------------------------------------------------------------
-
-Q73. How do you update an item immutably?
-
-ANSWER:
-
-setItems(prevItems =>
-    prevItems.map(item =>
-        item.id === id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-    )
-);
-
-
-This pattern is worth mastering.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 16 — SHALLOW COPY AND REFERENCES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q74. What is a shallow copy?
-
-ANSWER:
-
-A shallow copy creates a new outer array,
-but nested objects/arrays can still share references.
-
-Example:
-
-const users = [
-    { name: "Navneet" }
-];
-
-const copy = [...users];
-
-copy[0].name = "Rahul";
-
-console.log(users[0].name);
-
-Output:
-
-Rahul
-
-
-The outer arrays are different,
-but the nested object is shared.
-
-
-------------------------------------------------------------
-
-Q75. What will be the output?
-
-const a = [1, 2, 3];
-
-const b = [...a];
-
-console.log(a === b);
-
-ANSWER:
-
-false
-
-Different array objects.
-
-
-------------------------------------------------------------
-
-Q76. What will be the output?
-
-const a = [1, 2, 3];
-
-const b = a;
-
-console.log(a === b);
-
-ANSWER:
-
-true
-
-Same reference.
-
-
-------------------------------------------------------------
-
-Q77. What will be the output?
-
-console.log([] === []);
-
-ANSWER:
-
-false
-
-Each [] creates a different array object.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 17 — NESTED ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q78. What is a nested array?
-
-ANSWER:
-
-An array containing another array.
-
-Example:
-
-const matrix = [
-    [1, 2],
-    [3, 4]
-];
-
-
-------------------------------------------------------------
-
-Q79. Access the value 4.
-
-const matrix = [
-    [1, 2],
-    [3, 4]
-];
-
-ANSWER:
-
-console.log(matrix[1][1]);
-
-Output:
-
-4
-
-
-------------------------------------------------------------
-
-Q80. What does flat() do?
-
-ANSWER:
-
-It flattens nested arrays.
-
-const numbers = [
-    [1, 2],
-    [3, 4]
-];
-
-console.log(numbers.flat());
-
-Output:
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q81. What does flat(Infinity) do?
-
-ANSWER:
-
-It recursively flattens nested arrays to all levels.
-
-const data = [
-    1,
-    [2, [3, [4]]]
-];
-
-console.log(data.flat(Infinity));
-
-Output:
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q82. What does flatMap() combine?
-
-ANSWER:
-
-map()
-+
-one level of flat()
-
-
-Example:
-
-const numbers = [1, 2, 3];
-
-const result = numbers.flatMap(
-    num => [num, num * 2]
-);
-
-Output:
-
-[
-    1, 2,
-    2, 4,
-    3, 6
-]
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 18 — TRUTHY/FALSY ARRAY TRAPS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q83. Is an empty array truthy or falsy?
-
-ANSWER:
-
-TRUTHY.
-
-Boolean([])
-
-→ true
-
-
-Very important.
-
-
-------------------------------------------------------------
-
-Q84. What is the output?
-
-if ([]) {
-    console.log("Hello");
-}
-
-ANSWER:
-
-Hello
-
-Because [] is truthy.
-
-
-------------------------------------------------------------
-
-Q85. How do you check whether an array is empty?
-
-ANSWER:
-
-if (arr.length === 0) {
-
-    console.log("Empty");
-
-}
-
-
-To check non-empty:
-
-if (arr.length > 0) {
-
-}
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 19 — ARRAY TYPE CHECKING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q86. What is:
-
-typeof []
-
-ANSWER:
-
-"object"
-
-
-This is a famous JavaScript quirk.
-
-
-------------------------------------------------------------
-
-Q87. How do you correctly check whether something is an array?
-
-ANSWER:
-
-Array.isArray(value)
-
-
-Example:
-
-Array.isArray([1, 2, 3]);
-
-Output:
-
-true
-
-
-Array.isArray("hello");
-
-Output:
-
-false
-
-
-------------------------------------------------------------
-
-Q88. Why shouldn't you use:
-
-typeof value === "array"
-
-ANSWER:
-
-Because JavaScript's typeof operator does not return
-"array".
-
-For arrays:
-
-typeof [] === "object"
-
-
-Use:
-
-Array.isArray(value)
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 20 — DELETE TRAP
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q89. Why should you avoid delete arr[index]?
-
-ANSWER:
-
-Because it removes the value but leaves a hole.
-
-Example:
-
-const users = ["A", "B", "C"];
-
-delete users[1];
-
-The array becomes conceptually:
-
-["A", empty, "C"]
-
-
-For normal removal, use:
-
-splice()
-
-or immutable:
-
-filter()
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 21 — CHAINING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q90. What is array method chaining?
-
-ANSWER:
-
-Using the result of one array method as the input
-to another.
-
-Example:
-
-const numbers = [1, 2, 3, 4, 5];
-
-const result = numbers
-    .filter(num => num % 2 === 0)
-    .map(num => num * 10);
-
-Output:
-
-[20, 40]
-
-
-Flow:
-
-[1,2,3,4,5]
-      ↓
-   filter
-      ↓
-   [2,4]
-      ↓
-    map
-      ↓
-   [20,40]
-
-
-------------------------------------------------------------
-
-Q91. Solve this:
-
-Get names of active users whose age is above 18.
-
-ANSWER:
-
-const result = users
-    .filter(user => user.active)
-    .filter(user => user.age > 18)
-    .map(user => user.name);
-
-
-------------------------------------------------------------
-
-Q92. Calculate total price of all products
-that are currently in stock.
-
-ANSWER:
-
-const total = products
-    .filter(product => product.stock > 0)
-    .reduce(
-        (sum, product) =>
-            sum + product.price,
-        0
-    );
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 22 — MERN/API USE CASES
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q93. Your Express API returns an array of users.
-How would React render them?
-
-ANSWER:
-
-users.map(user => (
-
-    <UserCard
-        key={user._id}
-        user={user}
-    />
-
-));
-
-
-This is one of the most common array patterns in React.
-
-
-------------------------------------------------------------
-
-Q94. Why is key important when rendering arrays in React?
-
-ANSWER:
-
-React uses the key to identify list items between renders.
-
-Example:
-
-users.map(user => (
-
-    <UserCard
-        key={user._id}
-        user={user}
-    />
-
-));
-
-
-Prefer a stable unique ID from the data.
-
-Avoid using array index as key when list items
-can be reordered, inserted, or removed.
-
-
-------------------------------------------------------------
-
-Q95. How would you implement product search?
-
-ANSWER:
-
-const filteredProducts = products.filter(
-    product =>
-        product.name
-            .toLowerCase()
-            .includes(searchTerm.toLowerCase())
-);
-
-
-------------------------------------------------------------
-
-Q96. How would you filter products by category?
-
-ANSWER:
-
-const filteredProducts = products.filter(
-    product => product.category === selectedCategory
-);
-
-
-------------------------------------------------------------
-
-Q97. How would you calculate a shopping cart total?
-
-ANSWER:
+Calculate:
 
 const total = cart.reduce(
     (sum, item) =>
@@ -4281,1235 +3094,60 @@ const total = cart.reduce(
 );
 
 
-------------------------------------------------------------
-
-Q98. How would you check whether a cart contains
-an out-of-stock item?
-
-ANSWER:
-
-const hasOutOfStock = cart.some(
-    item => item.stock === 0
-);
+These patterns are worth practicing until they become natural.
 
 
-------------------------------------------------------------
-
-Q99. How would you check whether all cart items
-have valid quantities?
-
-ANSWER:
-
-const validCart = cart.every(
-    item => item.quantity > 0
-);
+──────────────────────────────────────────────────────────────────────
 
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 23 — ASYNC + ARRAYS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                    FINAL MENTAL MODEL
+──────────────────────────────────────────────────────────────────────
 
 
-Q100. How do you perform async operations for every
-element in parallel?
+              ARRAY
+                |
+        ┌───────┼────────┐
+        ↓       ↓        ↓
+      Data    Objects   Values
+        |
+        ↓
+   ┌────┴─────────────────────────────┐
+   ↓            ↓          ↓          ↓
+  map()      filter()    find()    reduce()
+   ↓            ↓          ↓          ↓
+transform     select     one item   one result
+   |
+   ↓
+React UI / API / Business Logic
+   |
+   ↓
+Express
+   |
+   ↓
+MongoDB
 
-ANSWER:
 
-const results = await Promise.all(
-    users.map(user => fetchUserData(user.id))
-);
+For MERN, your most important array skills are:
 
-
-Flow:
-
-users
-  ↓
+Array of Objects
+        ↓
 map()
-  ↓
-Promise for each user
-  ↓
-Promise.all()
-  ↓
-wait for all
-  ↓
-results
-
-
-------------------------------------------------------------
-
-Q101. Why can forEach(async () => {}) be problematic?
-
-ANSWER:
-
-Because forEach() does not wait for async callbacks.
-
-Example:
-
-users.forEach(async user => {
-
-    await saveUser(user);
-
-});
-
-console.log("Done");
-
-
-"Done" may execute before all saveUser()
-operations complete.
-
-
-------------------------------------------------------------
-
-Q102. How do you process async operations sequentially?
-
-ANSWER:
-
-for (const user of users) {
-
-    await saveUser(user);
-
-}
-
-Here each operation waits for the previous one.
-
-
-------------------------------------------------------------
-
-Q103. How do you process independent async operations
-in parallel?
-
-ANSWER:
-
-await Promise.all(
-    users.map(user => saveUser(user))
-);
-
-
-Rule:
-
-Need sequential processing:
-
-for...of + await
-
-
-Independent operations:
-
-Promise.all(
-    array.map(...)
-)
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 24 — ARRAY PERFORMANCE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q104. What is the typical time complexity of accessing
-an array element by index?
-
-ANSWER:
-
-O(1)
-
-Example:
-
-arr[500];
-
-
-Direct index access is generally constant time.
-
-
-------------------------------------------------------------
-
-Q105. What is the typical time complexity of searching
-an array?
-
-ANSWER:
-
-O(n)
-
-Examples:
-
-includes()
-indexOf()
+filter()
 find()
-
-
-In the worst case, we may inspect every element.
-
-
-------------------------------------------------------------
-
-Q106. What is the typical complexity of map()?
-
-ANSWER:
-
-O(n)
-
-Because the callback normally runs once
-for every element.
-
-
-------------------------------------------------------------
-
-Q107. What is the typical complexity of filter()?
-
-ANSWER:
-
-O(n)
-
-
-------------------------------------------------------------
-
-Q108. What is the typical complexity of reduce()?
-
-ANSWER:
-
-O(n)
-
-
-------------------------------------------------------------
-
-Q109. What is the typical complexity of sorting?
-
-ANSWER:
-
-Typically O(n log n), although the exact implementation
-depends on the JavaScript engine.
-
-
-------------------------------------------------------------
-
-Q110. Why might you use a Map/Object instead of an array
-for repeated ID lookups?
-
-ANSWER:
-
-If you repeatedly need:
-
-id → user
-
-scanning an array with find() costs O(n) per lookup.
-
-A suitable Map/object structure can provide much faster
-key-based lookup on average.
-
-Example:
-
-const usersById = new Map();
-
-usersById.set(user._id, user);
-
-Then:
-
-usersById.get(userId);
-
-
-This is an important data-structure decision.
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 25 — IMPORTANT OUTPUT QUESTIONS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q111. What is the output?
-
-const arr = [1, 2, 3];
-
-console.log(arr.length);
-
-ANSWER:
-
-3
-
-
-------------------------------------------------------------
-
-Q112. What is the output?
-
-const arr = [10, 20, 30];
-
-console.log(arr[arr.length - 1]);
-
-ANSWER:
-
-30
-
-
-------------------------------------------------------------
-
-Q113. What is the output?
-
-const arr = [1, 2, 3];
-
-arr.push(4);
-
-console.log(arr);
-
-ANSWER:
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q114. What is the output?
-
-const arr = [1, 2, 3];
-
-arr.pop();
-
-console.log(arr);
-
-ANSWER:
-
-[1, 2]
-
-
-------------------------------------------------------------
-
-Q115. What is the output?
-
-const arr = [1, 2, 3];
-
-console.log(arr.slice(1));
-
-ANSWER:
-
-[2, 3]
-
-
-------------------------------------------------------------
-
-Q116. What is the output?
-
-const arr = [1, 2, 3];
-
-arr.splice(1, 1);
-
-console.log(arr);
-
-ANSWER:
-
-[1, 3]
-
-
-------------------------------------------------------------
-
-Q117. What is the output?
-
-const arr = [1, 2, 3];
-
-const result = arr.map(x => x * 2);
-
-console.log(arr);
-console.log(result);
-
-ANSWER:
-
-[1, 2, 3]
-
-[2, 4, 6]
-
-
-------------------------------------------------------------
-
-Q118. What is the output?
-
-const arr = [1, 2, 3, 4];
-
-const result = arr.filter(x => x > 2);
-
-console.log(result);
-
-ANSWER:
-
-[3, 4]
-
-
-------------------------------------------------------------
-
-Q119. What is the output?
-
-const arr = [1, 2, 3, 4];
-
-const result = arr.reduce(
-    (sum, x) => sum + x,
-    0
-);
-
-console.log(result);
-
-ANSWER:
-
-10
-
-
-------------------------------------------------------------
-
-Q120. What is the output?
-
-const a = [1, 2, 3];
-const b = a;
-
-b.push(4);
-
-console.log(a);
-
-ANSWER:
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q121. What is the output?
-
-const a = [1, 2, 3];
-const b = [...a];
-
-b.push(4);
-
-console.log(a);
-console.log(b);
-
-ANSWER:
-
-[1, 2, 3]
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q122. What is the output?
-
-console.log([] === []);
-
-ANSWER:
-
-false
-
-
-------------------------------------------------------------
-
-Q123. What is the output?
-
-console.log(Boolean([]));
-
-ANSWER:
-
-true
-
-
-------------------------------------------------------------
-
-Q124. What is the output?
-
-console.log(typeof []);
-
-ANSWER:
-
-"object"
-
-
-------------------------------------------------------------
-
-Q125. What is the output?
-
-console.log(Array.isArray([]));
-
-ANSWER:
-
-true
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 26 — INTERVIEW CODING PROBLEMS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q126. Find the largest number.
-
-const numbers = [10, 50, 20, 90, 30];
-
-ANSWER:
-
-const max = Math.max(...numbers);
-
-console.log(max);
-
-Output:
-
-90
-
-
-------------------------------------------------------------
-
-Q127. Find the smallest number.
-
-ANSWER:
-
-const min = Math.min(...numbers);
-
-
-------------------------------------------------------------
-
-Q128. Reverse an array.
-
-ANSWER:
-
-const reversed = [...numbers].reverse();
-
-
-Or:
-
-const reversed = numbers.toReversed();
-
-
-------------------------------------------------------------
-
-Q129. Remove duplicates from an array.
-
-const numbers = [1, 2, 2, 3, 3, 4];
-
-ANSWER:
-
-const unique = [...new Set(numbers)];
-
-Output:
-
-[1, 2, 3, 4]
-
-
-------------------------------------------------------------
-
-Q130. Find duplicate values.
-
-ANSWER:
-
-const numbers = [1, 2, 2, 3, 3, 4];
-
-const duplicates = numbers.filter(
-    (num, index) =>
-        numbers.indexOf(num) !== index
-);
-
-Output:
-
-[2, 3]
-
-
-For very large datasets, a Set-based approach is
-usually more efficient.
-
-
-------------------------------------------------------------
-
-Q131. Remove all falsy values.
-
-const values = [
-    0,
-    1,
-    false,
-    true,
-    "",
-    "Hello",
-    null,
-    undefined
-];
-
-ANSWER:
-
-const result = values.filter(Boolean);
-
-Output:
-
-[1, true, "Hello"]
-
-
-IMPORTANT:
-
-filter(Boolean)
-
-is shorthand for keeping truthy values.
-
-
-------------------------------------------------------------
-
-Q132. Find the sum of even numbers.
-
-ANSWER:
-
-const sum = numbers
-    .filter(num => num % 2 === 0)
-    .reduce((sum, num) => sum + num, 0);
-
-
-------------------------------------------------------------
-
-Q133. Find the average of numbers.
-
-ANSWER:
-
-const total = numbers.reduce(
-    (sum, num) => sum + num,
-    0
-);
-
-const average = total / numbers.length;
-
-
-------------------------------------------------------------
-
-Q134. Find the first number greater than 50.
-
-ANSWER:
-
-const result = numbers.find(
-    num => num > 50
-);
-
-
-------------------------------------------------------------
-
-Q135. Check whether array contains an even number.
-
-ANSWER:
-
-const result = numbers.some(
-    num => num % 2 === 0
-);
-
-
-------------------------------------------------------------
-
-Q136. Check whether all numbers are positive.
-
-ANSWER:
-
-const result = numbers.every(
-    num => num > 0
-);
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 27 — ADVANCED ARRAY OF OBJECTS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q137. Group users by role.
-
-const users = [
-    { name: "A", role: "admin" },
-    { name: "B", role: "user" },
-    { name: "C", role: "admin" }
-];
-
-ANSWER:
-
-const grouped = users.reduce(
-    (acc, user) => {
-
-        if (!acc[user.role]) {
-            acc[user.role] = [];
-        }
-
-        acc[user.role].push(user);
-
-        return acc;
-
-    },
-    {}
-);
-
-
-Result:
-
-{
-    admin: [
-        { name: "A", role: "admin" },
-        { name: "C", role: "admin" }
-    ],
-
-    user: [
-        { name: "B", role: "user" }
-    ]
-}
-
-
-This is a VERY useful real-world pattern.
-
-
-------------------------------------------------------------
-
-Q138. Calculate total revenue.
-
-const orders = [
-    { amount: 1000 },
-    { amount: 2000 },
-    { amount: 500 }
-];
-
-ANSWER:
-
-const revenue = orders.reduce(
-    (total, order) =>
-        total + order.amount,
-    0
-);
-
-Output:
-
-3500
-
-
-------------------------------------------------------------
-
-Q139. Get only product names whose stock is available
-and price is below 50,000.
-
-ANSWER:
-
-const result = products
-    .filter(product => product.stock > 0)
-    .filter(product => product.price < 50000)
-    .map(product => product.name);
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 28 — MUTATING VS NON-MUTATING
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q140. Which common array methods mutate the original array?
-
-ANSWER:
-
-push()
-pop()
-shift()
-unshift()
-splice()
-sort()
-reverse()
-
-
-------------------------------------------------------------
-
-Q141. Which common methods don't mutate the original array?
-
-ANSWER:
-
-map()
-filter()
-slice()
-concat()
-flat()
-flatMap()
-
-
-Modern non-mutating methods include:
-
-toSorted()
-toReversed()
-toSpliced()
-
-
-------------------------------------------------------------
-
-Q142. Why is knowing mutation important in React?
-
-ANSWER:
-
-Because directly mutating state can lead to confusing
-state management and rendering behavior.
-
-Example:
-
-BAD:
-
-state.push(item);
-
-
-BETTER:
-
-setState(prev => [
-    ...prev,
-    item
-]);
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 29 — REAL MERN SCENARIOS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q143. MongoDB returns 100 products.
-You want only products with stock > 0.
-
-ANSWER:
-
-const availableProducts = products.filter(
-    product => product.stock > 0
-);
-
-
-------------------------------------------------------------
-
-Q144. API returns users and you want only their IDs.
-
-ANSWER:
-
-const ids = users.map(
-    user => user._id
-);
-
-
-------------------------------------------------------------
-
-Q145. Admin dashboard needs total sales.
-
-ANSWER:
-
-const totalSales = orders.reduce(
-    (sum, order) =>
-        sum + order.totalAmount,
-    0
-);
-
-
-------------------------------------------------------------
-
-Q146. Check whether a user has delete permission.
-
-const permissions = [
-    "read",
-    "write",
-    "delete"
-];
-
-ANSWER:
-
-const canDelete =
-    permissions.includes("delete");
-
-
-------------------------------------------------------------
-
-Q147. Remove a product from React state.
-
-ANSWER:
-
-setProducts(prevProducts =>
-    prevProducts.filter(
-        product => product._id !== productId
-    )
-);
-
-
-------------------------------------------------------------
-
-Q148. Update product quantity in React state.
-
-ANSWER:
-
-setCart(prevCart =>
-    prevCart.map(item =>
-        item.productId === productId
-            ? {
-                ...item,
-                quantity: item.quantity + 1
-              }
-            : item
-    )
-);
-
-
-------------------------------------------------------------
-
-Q149. Add a new product to React state.
-
-ANSWER:
-
-setProducts(prevProducts => [
-    ...prevProducts,
-    newProduct
-]);
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-PART 30 — FINAL INTERVIEW RAPID FIRE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-
-Q150. Are arrays objects in JavaScript?
-
-ANSWER:
-
-YES.
-
-
-Q151. Does array indexing start at 0?
-
-ANSWER:
-
-YES.
-
-
-Q152. Does push() add at the end?
-
-ANSWER:
-
-YES.
-
-
-Q153. Does pop() remove from the end?
-
-ANSWER:
-
-YES.
-
-
-Q154. Does shift() remove from the beginning?
-
-ANSWER:
-
-YES.
-
-
-Q155. Does unshift() add at the beginning?
-
-ANSWER:
-
-YES.
-
-
-Q156. Does splice() mutate?
-
-ANSWER:
-
-YES.
-
-
-Q157. Does slice() mutate?
-
-ANSWER:
-
-NO.
-
-
-Q158. Does map() return a new array?
-
-ANSWER:
-
-YES.
-
-
-Q159. Does filter() return a new array?
-
-ANSWER:
-
-YES.
-
-
-Q160. Does forEach() return a new array?
-
-ANSWER:
-
-NO.
-
-
-Q161. Does find() return the first matching element?
-
-ANSWER:
-
-YES.
-
-
-Q162. Does some() check whether at least one matches?
-
-ANSWER:
-
-YES.
-
-
-Q163. Does every() check whether all match?
-
-ANSWER:
-
-YES.
-
-
-Q164. Does reduce() usually produce one accumulated result?
-
-ANSWER:
-
-YES.
-
-
-Q165. Does sort() mutate?
-
-ANSWER:
-
-YES.
-
-
-Q166. Does reverse() mutate?
-
-ANSWER:
-
-YES.
-
-
-Q167. Is [] truthy?
-
-ANSWER:
-
-YES.
-
-
-Q168. Is typeof [] equal to "array"?
-
-ANSWER:
-
-NO.
-
-It is:
-
-"object"
-
-
-Q169. How do you check for an array?
-
-ANSWER:
-
-Array.isArray(value)
-
-
-Q170. Is [] === [] true?
-
-ANSWER:
-
-NO.
-
-
-Q171. Is const arr = []; arr.push(1) allowed?
-
-ANSWER:
-
-YES.
-
-const prevents reassignment of the variable,
-not mutation of the array.
-
-
-Q172. Is const arr = []; arr = [1] allowed?
-
-ANSWER:
-
-NO.
-
-Because that tries to reassign the const variable.
-
-
-Q173. What is the most important array structure
-for MERN?
-
-ANSWER:
-
-Array of objects.
-
-Example:
-
-[
-    {
-        _id: "1",
-        name: "Laptop",
-        price: 50000
-    },
-    {
-        _id: "2",
-        name: "Phone",
-        price: 30000
-    }
-]
-
-
-Q174. What are the most important array methods
-for a MERN developer?
-
-ANSWER:
-
-map()
-filter()
 reduce()
-find()
 some()
 every()
-forEach()
-includes()
-findIndex()
-sort()
-slice()
-splice()
-
-And concepts:
-
-spread
-destructuring
-references
-shallow copy
-immutability
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FINAL ARRAY MENTAL MODEL
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-When you see an ARRAY in a MERN application,
-immediately ask:
-
-"WHAT DO I WANT TO DO WITH THIS DATA?"
-
-
-DISPLAY / TRANSFORM
         ↓
-      map()
-
-
-FILTER / SEARCH
+Spread operator
         ↓
-     filter()
-
-
-FIND ONE
+Immutable updates
         ↓
-      find()
-
-
-FIND INDEX
+React state
         ↓
-   findIndex()
+API data
 
 
-CALCULATE / AGGREGATE
-        ↓
-     reduce()
+If you become very comfortable with these,
+you will use arrays naturally throughout MERN development.
 
-
-CHECK AT LEAST ONE
-        ↓
-      some()
-
-
-CHECK ALL
-        ↓
-     every()
-
-
-CHECK EXISTENCE
-        ↓
-    includes()
-
-
-ADD
-        ↓
-      push()
-
-
-REMOVE LAST
-        ↓
-       pop()
-
-
-REMOVE FIRST
-        ↓
-      shift()
-
-
-ADD FIRST
-        ↓
-     unshift()
-
-
-INSERT / REMOVE / REPLACE
-        ↓
-      splice()
-
-
-COPY / MERGE
-        ↓
-      spread ...
-
-
-PORTION
-        ↓
-      slice()
-
-
-SORT
-        ↓
-   sort() / toSorted()
-
-
-RENDER IN REACT
-        ↓
-      map()
-
-
-UPDATE REACT ARRAY
-        ↓
-       map()
-
-
-DELETE REACT ARRAY ITEM
-        ↓
-      filter()
-
-
-ASYNC FOR ALL ITEMS
-        ↓
-Promise.all(array.map(...))
-
-
-DATABASE/API DATA
-        ↓
-  ARRAY OF OBJECTS
-
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-WHAT YOU SHOULD NOW BE ABLE TO DO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-After completing these questions, you should be able to:
-
-✓ Create and access arrays
-✓ Understand indexes and length
-✓ Add/remove elements
-✓ Understand slice vs splice
-✓ Search arrays
-✓ Use map/filter/reduce properly
-✓ Use find/some/every
-✓ Sort arrays
-✓ Reverse arrays
-✓ Merge arrays
-✓ Split/join data
-✓ Use spread and destructuring
-✓ Understand references
-✓ Understand shallow copies
-✓ Understand mutation
-✓ Update arrays immutably
-✓ Work with arrays of objects
-✓ Work with nested arrays
-✓ Render arrays in React
-✓ Process API responses
-✓ Calculate cart/order totals
-✓ Search/filter products
-✓ Handle async array operations
-✓ Understand Promise.all + map
-✓ Understand array time complexity
-✓ Solve common array interview problems
-✓ Avoid common JavaScript array traps
 */
