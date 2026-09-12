@@ -1907,14 +1907,11 @@ These are some of the most important DOM fundamentals.
                        DOM
                         ↓
                      SCREEN
-
-
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                      WHAT TO FOCUS ON
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 For your MERN journey, don't try to memorize every DOM method.
-
 Master these:
 
 DOM
