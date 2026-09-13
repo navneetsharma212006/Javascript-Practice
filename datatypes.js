@@ -2192,7 +2192,6 @@ Object / Array / Function
 How does this type behave?
 
         ↓
-
 Can I compare it?
 Can I convert it?
 Can I mutate it?
@@ -2200,7 +2199,6 @@ Can I send it through JSON?
 Can I use it in a condition?
 
         ↓
-
 React
    ↓
 Express
@@ -2210,8 +2208,6 @@ MongoDB
 Express
    ↓
 React
-
-
 That is why understanding data types is
 one of the foundations of becoming a strong MERN developer.
 */
