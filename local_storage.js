@@ -1853,7 +1853,6 @@ For MERN development, remember these:
 
 
 Think of the roles like this:
-
     React State
         → What UI currently needs
 
@@ -1936,9 +1935,7 @@ CORE IDEA:
         ↓
     JavaScript gets data again
 
-
 And in MERN:
-
     React
       ↓
     localStorage     ← client-side persistence
