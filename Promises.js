@@ -1466,14 +1466,11 @@ getUsers() returns a Promise.
 
 It does NOT directly return the final value.
 
-
 You would use:
 
 const data = await getUsers();
 
-
 inside an async context.
-
 
 Or:
 
@@ -1482,7 +1479,6 @@ getUsers().then((data) => {
     console.log(data);
 
 });
-
 
 ------------------------------------------------------------
 Q38. What happens if you forget await?
