@@ -288,12 +288,9 @@ Example:
 
     PATCH /api/products/123
 
-
 DELETE
 ------
-
 Used to delete data.
-
 Example:
 
     DELETE /api/products/123
